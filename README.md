@@ -9,3 +9,4 @@ The project is divided into the Website and Mobile Application:
 Separate instructions are provided for the **Website** and **Mobile Application**.
 
 ## Website(pre-requisites)
+1. Have the latest version of Python 3.x and Django 10.5 and above.
