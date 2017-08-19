@@ -1,6 +1,6 @@
-# GardenMirror Reservation System
+# Ladylynn and sisters Reservation System
 
-This is the reservation system for the Garden Mirror Catering Services.
+This is the reservation system for the Ladylynn and sisters Catering Services.
 
 The project is divided into the Website and Mobile Application:
 * The website is composed of the actual Django project.
