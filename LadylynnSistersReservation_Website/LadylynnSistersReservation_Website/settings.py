@@ -76,6 +76,7 @@ WSGI_APPLICATION = 'LadylynnSistersReservation_Website.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'LadylynnSistersReservation_DB',
         'USER': 'root',
         'PASSWORD': '',
