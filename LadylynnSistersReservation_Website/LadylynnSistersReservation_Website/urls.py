@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url,include # added include
 from django.contrib import admin
-
+from home import views as hviews # to remove after rtest is complete
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^',include('home.urls'))
+    url(r'^',include('home.urls')),
+    url(r'^rtest/',hviews.rtest,name="rtest")
 ]
