@@ -8,12 +8,7 @@ through Django, we won't hardcode the path this time -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<style>
-/* for SLIDESHOW */
-
-
-</style>
+<link rel="stylesheet" href="{% static 'home/css/main.css' %}">
 
 <div class = "w3-top">
 <div class = "w3-bar w3-black w3-card-2">
@@ -47,10 +42,10 @@ through Django, we won't hardcode the path this time -->
         class="w3-button w3-display-topright w3-gray">&times;</span>
     
       <div class="w3-container" style="color: black;">
-       <form action="/action_page.php"><br>
+  <form action="/action_page.php"><br>
      <h2 style="color: black;">Sign Up <small style="color: gray;"> It's free</small></h2>
     <hr class="colorgraph">
-    {% comment %} <div class="form-group">
+    <div class="form-group">
     <label for="usr">Username:</label>
     <input type="text" class="form-control" id="usr" required>
     </div>
@@ -58,11 +53,10 @@ through Django, we won't hardcode the path this time -->
       <label for="pwd">Password:</label>
       <input type="password" class="form-control" id="pwd" required>
     </div>
-  <div class="form-group">
+    <div class="form-group">
     <label for="pwd">Confirm Password:</label>
     <input type="password" class="form-control" id="pwd" required>
-    </div> {% endcomment %}
-    {{ }}
+    </div> 
   </form>
   
  <div class="row">
@@ -83,6 +77,7 @@ through Django, we won't hardcode the path this time -->
   </div>
   </div>
   </div>
+<!-- end of w3-top-->
 
 <!-- Navbar po -->
   <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
