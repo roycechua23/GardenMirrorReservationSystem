@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{% static 'home/css/main.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'home/css/main.css' %}"> {% endcomment %}
     <link rel="stylesheet" href="{% static 'bootstrap4/css/bootstrap.min.css' %}">
     <script src="{% static 'popper1/popper.js' %}"></script>
     <script src="{% static 'jquery3.21/jquery-3.2.1.min.js' %}"></script>
@@ -29,13 +29,13 @@
             <!-- The navbar items -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="#">About us</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Contact us</a>
                     </li>
                 </ul>
@@ -59,7 +59,7 @@
             </div>
         </div> 
     </nav>
-
+    
     {% block body_block %}
     {% endblock %}
 </body>
