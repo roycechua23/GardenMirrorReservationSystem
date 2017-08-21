@@ -19,6 +19,7 @@ from home import views as hviews # to remove after rtest is complete
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^',include('home.urls')),
+    url(r'^',hviews.index,name="index"),
+    url(r'^home/',include('home.urls')),
     url(r'^rtest/',hviews.rtest,name="rtest")
 ]
