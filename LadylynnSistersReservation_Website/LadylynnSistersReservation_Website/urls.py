@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',hviews.index,name="index"),
     url(r'^home/',include('home.urls')),
+    url(r'^rtest/',hviews.rtest,name="rtest")
 ]

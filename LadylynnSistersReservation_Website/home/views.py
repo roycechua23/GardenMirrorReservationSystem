@@ -3,10 +3,14 @@ from home.forms import UserForm,UserProfileInfoForm
 # Create your views here.
 
 def index(request):
-    return render(request,"home/base.html",context=None)
+    user_form = UserForm()
+    profile_form = UserProfileInfoForm()
+    return render(request,"home/body.html",
+                          context={'user_form':user_form,
+                                   'profile_form':profile_form})
 
 def rtest(request):
-    return render(request,"home/body.html",context=None)
+    return render(request,"home/index.html",context=None)
 
 def register(request):
 
@@ -62,8 +66,8 @@ def register(request):
         profile_form = UserProfileInfoForm()
 
     # This is the render and context dictionary to feed
-    # back to the registration.html file page.
-    return render(request,'home/signup.html',
+    # back to the body.html file page.
+    return render(request,'home/body.html',
                           {'user_form':user_form,
                            'profile_form':profile_form,
                            'registered':registered})
