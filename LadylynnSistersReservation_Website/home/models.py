@@ -8,7 +8,7 @@ class UserProfileInfo(models.Model):
     
     # please pip install pillow before using 
     # Image field
-    profile_pic = models.ImageField(blank=True,upload_to='profile_pics')
+    profile_pic = models.ImageField(blank=True,upload_to='media/profile_pics')
     
     def __str__(self):
         return self.user.username
