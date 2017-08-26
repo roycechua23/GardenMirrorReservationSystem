@@ -92,6 +92,7 @@
 /*cancel button color */
 .sidenav a:hover, .offcanvas a:focus{
     color: #f1f1f1;
+
 }
 
 .sidenav .closebtn {
@@ -138,10 +139,10 @@
 
 }
 
-/*log in button*/
+/*log in button for LOG IN*/
 #login #login-btn{
 
-  width:150px;
+  width:100px;
   height: 25px;
   background:red;
   text-align: center;
@@ -162,7 +163,7 @@ input[type=text], input[type=password] {
 }
 
 /* For Sign Up */
-.cancelbtn {
+.cancelbtn, .signupbtn {
     padding: 14px 20px;
     background-color: #f44336;
 }
@@ -188,7 +189,6 @@ button {
     display: table;
 }
 
-/* HELLO WINDEEEEEEEEEE*/
 .colorgraph {
   height: 5px;
   border-top: 0;

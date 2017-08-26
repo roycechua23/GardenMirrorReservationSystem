@@ -9,14 +9,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {% comment %} <link rel="stylesheet" href="{% static 'home/css/main.css' %}"> {% endcomment %}
     <link rel="stylesheet" href="{% static 'bootstrap4/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{%static 'home/css/main.css'%}"> 
     <script src="{% static 'popper1/popper.js' %}"></script>
     <script src="{% static 'jquery3.21/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'bootstrap4/js/bootstrap.js' %}"></script>
     {% bootstrap_css %}
     {% bootstrap_javascript %}
-
-    
-    
+          
     <title>Ladylynn Sisters</title>
 </head>
 <body>
@@ -40,9 +39,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact us</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Wendie</a>
-                    </li>
+
                 </ul>
                 <ul class="navbar-nav navbar-right">
                     <li class="nav-item active">
@@ -81,17 +78,21 @@
             </div>
             <div class="modal-body">
               <h2>Sign up here!</h2>
+              <hr class="colorgraph">
               <form name="signupform" enctype="multipart/form-data" method="POST">
                 {% csrf_token %}
                 {% bootstrap_form user_form %}
                 {% bootstrap_form profile_form %}
+                <hr class="colorgraph">
                 <input class="form-control" type="submit" name="" value="Signup">
               </form>
             </div>
             <div class="modal-footer">
               <div align="center">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                {% comment %} <button type="button" class="btn btn-default">Signup</button> {% endcomment %}
+                {% comment %} 
+                <button type="button" class="btn btn-default" >Signup</button> 
+                {% endcomment %}
               </div>
             </div>
           </div>
