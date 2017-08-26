@@ -32,7 +32,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"></span> Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{% url 'index' %}"></span> Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About us</a>
@@ -46,31 +46,38 @@
                 </ul>
                 <ul class="navbar-nav navbar-right">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#signup">Sign up</a>
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#signupmodal">Sign up</a>
                     </li>
                     {# Some logic on what to display for last item#}
+                    
+                    {% comment %}
+                    This will not be used for now.. we'll use side menu instead
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="">Logout</a>
-                        {% comment %} Example of href="{% url 'logout' %}"" {% endcomment %}
+                        <a class="nav-link" href="{% url 'home:logout' %}">Logout</a>
+                        <!-- Example of href="{% url 'logout' %}" -->
                     </li>
-                    {% else %}
+                    {% else %} 
+                    {% endcomment %}
                     <li class="nav-item">
-                        <a class="nav-link" href="">Login</a>
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#loginmodal">Login</a>
                         {% comment %} Example of href="{% url 'basic_app:user_login' %}" {% endcomment %}
                     </li>
+                    {% comment %}
                     {% endif %}
+                    {% endcomment %}
                 </ul>
             </div>
         </div> 
     </nav>
     
-    <!-- other htmls will be inserted here -->
+    <!-- other html pages will be inserted here -->
     {% block body_block %}
     {% endblock %}
 
     {% comment %} Modal Section {% endcomment %}
-    <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="signuplabel" aria-hidden="true">
+    <!-- SignUp Modal -->
+    <div class="modal fade" id="signupmodal" tabindex="-1" role="dialog" aria-labelledby="signuplabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -81,12 +88,18 @@
             </div>
             <div class="modal-body">
               <h2>Sign up here!</h2>
-              <form name="signupform" enctype="multipart/form-data" method="POST">
-                {% csrf_token %}
-                {% bootstrap_form user_form %}
-                {% bootstrap_form profile_form %}
-                <input class="form-control" type="submit" name="" value="Signup">
+              {% if user_form %}
+              <form name="signupform" action="{% url 'home:user_signup' %}" enctype="multipart/form-data" method="POST">
+                <div class="container-fluid">
+                    {% csrf_token %}
+                    {% bootstrap_form user_form %}
+                    {% bootstrap_form profile_form %}
+                    <input class="btn btn-primary form-control" type="submit" name="" value="Signup">
+                </div>
               </form>
+              {% else %}
+              <p>Sign up form is unable to load..</p>
+              {% endif %}
             </div>
             <div class="modal-footer">
               <div align="center">
@@ -96,7 +109,41 @@
             </div>
           </div>
         </div>
-      </div>
+    </div>
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="loginlabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="loginlabel">Login Form</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'home:user_login' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username">Username: </label>
+                        <input class="form-control" type="text" id="username" name="username" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password: </label>
+                        <input class="form-control" type="password" id="password" name="password" placeholder="Password" required>
+                    </div>
+        
+                    <input class="form-control btn btn-primary" type="submit" name="login" id="login" value="Login">
+                </form>
+            </div>
+            <div class="modal-footer">
+              <div align="center">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                {% comment %} <button type="button" class="btn btn-default">Signup</button> {% endcomment %}
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
 
     <script src="{% static 'home/js/home.js' %}"></script>
 </body>
