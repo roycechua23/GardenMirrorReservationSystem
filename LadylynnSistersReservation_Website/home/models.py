@@ -5,11 +5,10 @@ from django.contrib.auth.models import User
 class UserProfileInfo(models.Model):
     
     user = models.OneToOneField(User)
-    
+
     # please pip install pillow before using 
     # Image field
     profile_pic = models.ImageField(blank=True,upload_to='profile_pics')
     
     def __str__(self):
         return self.user.username
-    
