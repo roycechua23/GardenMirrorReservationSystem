@@ -60,7 +60,7 @@ def index(request):
                                    'profile_form':profile_form})
 
 def login(request):
-    pass # last test comment
+    pass # last test edit from Royce Branch
 
 
 def rtest(request):
