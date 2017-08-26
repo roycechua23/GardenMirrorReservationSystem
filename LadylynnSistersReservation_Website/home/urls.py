@@ -12,5 +12,5 @@ urlpatterns = [
     url(r'^user_signup/$',views.register,name="user_signup"),
     url(r'^user_login/$',views.user_login,name="user_login"),
     url(r'^logout/$',views.user_logout,name="logout"),
-    url(r'^home/(?P<pk>[-\w]+)/$',views.home,name="home")
+    url(r'^user_home/(?P<pk>[-\w]+)/$',views.user_home,name="user_home")
 ]

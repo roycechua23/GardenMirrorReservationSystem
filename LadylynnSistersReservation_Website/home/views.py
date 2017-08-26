@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from home.forms import UserForm,UserProfileInfoForm
 from home.models import User,UserProfileInfo
 
@@ -17,17 +17,6 @@ def index(request):
     return render(request,"home/body.html",
                           context={'user_form':user_form,
                                    'profile_form':profile_form})
-
-<<<<<<< HEAD
-def login(request):
-    pass # last test edit from Royce Branch
-
-def rtest(request):
-    return render(request,"home/index.html",context=None)
-=======
-def loadlogin(request):
-    return render(request,'home/login.html',{})
->>>>>>> RoyceBranch
 
 @require_http_methods(["POST"])
 def register(request):
@@ -103,9 +92,9 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request,user)
-                u = UserProfileInfo.objects.filter(user__username=username)
+                u = User.objects.get(username=username)
                 request.session['user_id'] = u.id
-                return HttpResponseRedirect(reverse('home/{}'.format(u.id)))
+                return HttpResponseRedirect(reverse('home:user_home'),args=[u.id])
             else:
                 return HttpResponse("ACCOUNT NOT ACTIVE")
         else:
@@ -114,7 +103,7 @@ def user_login(request):
             return HttpResponse("Invalid Login details supplied")
     
     else:
-        return render(request,'home/login.html',{})
+        return HttpResponseRedirect(reverse('index'))
 
 @login_required
 def user_logout(request):
@@ -122,10 +111,10 @@ def user_logout(request):
     return HttpResponseRedirect(reverse('index'))
 
 @login_required
-def home(request,pk):
+def user_home(request,pk):
     print(pk)
-    userinfo = User.objects.filter(id=pk)
-    userprofileinfo = UserProfileInfo.objects.filter(user__id=pk)
+    userinfo = User.objects.get(id=pk)
+    userprofileinfo = UserProfileInfo.objects.get(id=pk)
     return render(request,"reservation/home.html",{'user':userinfo,'userprofilepic':userprofileinfo})
 
 @login_required
