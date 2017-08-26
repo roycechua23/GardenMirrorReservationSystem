@@ -62,7 +62,6 @@ def index(request):
 def login(request):
     pass # last test edit from Royce Branch
 
-
 def rtest(request):
     return render(request,"home/index.html",context=None)
 
