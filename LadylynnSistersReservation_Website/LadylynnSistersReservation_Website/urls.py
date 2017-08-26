@@ -13,6 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+# To allow media files to be inserted
+from django.conf import settings
+from django.conf.urls.static import static
+
 from django.conf.urls import url,include # added include
 from django.contrib import admin
 from home import views as hviews # to remove after rtest is complete
@@ -21,5 +25,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',hviews.index,name="index"),
     url(r'^home/',include('home.urls')),
+    url(r'^special/',hviews.special,name="special"),
     url(r'^rtest/',hviews.rtest,name="rtest")
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

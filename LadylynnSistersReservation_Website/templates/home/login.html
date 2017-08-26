@@ -1,0 +1,17 @@
+{% extends "home/base.html" %}
+{% load staticfiles %}
+
+{% block body_block %}
+    <div class="jumbotron">
+        <form action="{% url 'home:user_login' %}" method="POST">
+            {% csrf_token %}
+            <label for="username">Username: </label>
+            <input type="text" id="username" name="username" placeholder="Username">
+
+            <label for="password">Password: </label>
+            <input type="password" id="password" name="password">
+
+            <input type="submit" name="login" id="login" value="Login">
+        </form>
+    </div>
+{% endblock body_block %}
