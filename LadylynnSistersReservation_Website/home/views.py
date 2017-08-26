@@ -59,6 +59,10 @@ def index(request):
                           context={'user_form':user_form,
                                    'profile_form':profile_form})
 
+def login(request):
+    pass
+
+
 def rtest(request):
     return render(request,"home/index.html",context=None)
 
