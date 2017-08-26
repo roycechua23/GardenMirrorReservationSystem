@@ -114,7 +114,7 @@ def user_logout(request):
 def user_home(request,pk):
     print(pk)
     userinfo = User.objects.get(id=pk)
-    userprofileinfo = UserProfileInfo.objects.get(user_id=1)
+    userprofileinfo = UserProfileInfo.objects.get(user_id=pk)
     print(type(userprofileinfo))
     return render(request,"reservation/home.html",{'user':userinfo,'userprofilepic':userprofileinfo})
 
