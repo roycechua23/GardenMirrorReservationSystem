@@ -101,19 +101,19 @@ body {
 
 @media(min-width:768px) {
     #wrapper {
-        padding-left: 0;
-    }
-    #wrapper.toggled {
         padding-left: 250px;
     }
-    #sidebar-wrapper {
-        width: 0;
+    #wrapper.toggled {
+        padding-left: 0;
     }
-    #wrapper.toggled #sidebar-wrapper {
+    #sidebar-wrapper {
         width: 250px;
     }
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
     #page-content-wrapper {
-        padding: 20px;
+        padding: 17px;
         position: relative;
     }
     #wrapper.toggled #page-content-wrapper {

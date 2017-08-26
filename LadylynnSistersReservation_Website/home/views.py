@@ -94,7 +94,7 @@ def user_login(request):
                 login(request,user)
                 u = User.objects.get(username=username)
                 request.session['user_id'] = u.id
-                return HttpResponseRedirect(reverse('home:user_home'),args=[u.id])
+                return HttpResponseRedirect(reverse('home:user_home',args=[u.id]))
             else:
                 return HttpResponse("ACCOUNT NOT ACTIVE")
         else:
@@ -114,7 +114,8 @@ def user_logout(request):
 def user_home(request,pk):
     print(pk)
     userinfo = User.objects.get(id=pk)
-    userprofileinfo = UserProfileInfo.objects.get(id=pk)
+    userprofileinfo = UserProfileInfo.objects.get(id=1)
+    print(type(userprofileinfo))
     return render(request,"reservation/home.html",{'user':userinfo,'userprofilepic':userprofileinfo})
 
 @login_required
