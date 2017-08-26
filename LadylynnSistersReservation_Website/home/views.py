@@ -60,7 +60,7 @@ def index(request):
                                    'profile_form':profile_form})
 
 def login(request):
-    return 0
+    return aaa
 
 
 def rtest(request):
