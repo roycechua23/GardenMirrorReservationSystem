@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from home.forms import UserForm,UserProfileInfoForm
+from home.forms import UserForm,UserProfileInfoForm,ReservationForm
 from home.models import User,UserProfileInfo
 
 from django.core.urlresolvers import reverse
@@ -112,11 +112,16 @@ def user_logout(request):
 
 @login_required
 def user_home(request,pk):
-    print(pk)
     userinfo = User.objects.get(id=pk)
     userprofileinfo = UserProfileInfo.objects.get(user_id=pk)
-    print(type(userprofileinfo))
     return render(request,"home/user_home.html",{'user':userinfo,'userprofilepic':userprofileinfo})
+
+@login_required
+def loadmake_reservation(request,pk):
+    reservationform = ReservationForm()
+    userinfo = User.objects.get(id=pk)
+    userprofileinfo = UserProfileInfo.objects.get(user_id=pk)
+    return render(request,"home/make_reservation.html",{'user':userinfo,'userprofilepic':userprofileinfo,'reservationform':reservationform})
 
 @login_required
 def special(request):

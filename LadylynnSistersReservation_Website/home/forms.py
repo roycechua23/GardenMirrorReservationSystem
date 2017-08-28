@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from home.models import UserProfileInfo
+from home.models import UserProfileInfo,CateringPackages,Reservation
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
@@ -13,3 +13,18 @@ class UserProfileInfoForm(forms.ModelForm):
     class Meta():
         model = UserProfileInfo
         fields = ('profile_pic',)
+
+class ReservationForm(forms.ModelForm):
+    # package = forms.MultipleChoiceField()
+    # eventdate = forms.DateTimeField(widget=forms.DateTimeInput(format=' %H:%M'),label="Event Date")
+    # SplitDateTimeField(widget=forms.SplitDateTimeWidget(date_format='%m/%d/%Y',time_format='%H:%M'),label="Event Date")
+
+    class Meta():
+        model = Reservation
+        fields = ('package','eventtype','eventdate')
+        labels = {
+            'eventtype': 'Event Type',
+        }
+        widgets = {
+            'eventdate': forms.SplitDateTimeWidget(date_format='%m/%d/%Y',time_format='%H:%M')
+        }

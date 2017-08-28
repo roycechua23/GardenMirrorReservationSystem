@@ -34,7 +34,7 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
+                    <a href="{% url 'home:user_home' pk=user.id %}">
                         Hello, {{ user.first_name | title }}!
                     </a>
                 </li>
@@ -42,12 +42,12 @@
                     <img src="{{ MEDIA_URL }}{{ userprofilepic.profile_pic }}" width=150px style="border-radius:50%;">
                     
                 <li>
-                    <a href="#">Dashboard</a>
+                    <a href="{% url 'home:user_home' pk=user.id %}">Dashboard</a>
                 </li>
                 <li>
                     <a href="#" class="dropdown-toggle" id="reservationdropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reservation</a>
                     <div class="dropdown-menu" aria-labelledby="reservationdropdown" style="background-color:black; color:white;">
-                        <a class="dropdown-item" href="#">Make Reservation</a>
+                        <a class="dropdown-item" href="{% url 'home:make_reservation' pk=user.id %}">Make Reservation</a>
                         <a class="dropdown-item" href="#">Edit Reservation</a>
                         <a class="dropdown-item" href="#">Cancel Reservation</a>
                     </div>
