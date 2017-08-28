@@ -22,7 +22,7 @@
     {% comment %} Referenced JS Scripts are in the bottom {% endcomment %}
     
     <!-- Custom styles for this template -->
-    <link href="{% static 'reservation/css/simple-sidebar.css' %}" rel="stylesheet">
+    <link href="{% static 'home/css/simple-sidebar.css' %}" rel="stylesheet">
 
 </head>
 
@@ -94,15 +94,8 @@
     <!-- /#wrapper -->
 
 
-    <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
-
     <!-- Bootstrap and JQuery Scripts -->
+    <script src="{% static 'home/js/user_home.js' %}"></script>
     <script src="{% static 'jquery3.21/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'bootstrap4/js/bootstrap.js' %}"></script>
 </body>

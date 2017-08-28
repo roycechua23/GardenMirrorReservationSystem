@@ -116,7 +116,7 @@ def user_home(request,pk):
     userinfo = User.objects.get(id=pk)
     userprofileinfo = UserProfileInfo.objects.get(user_id=pk)
     print(type(userprofileinfo))
-    return render(request,"reservation/home.html",{'user':userinfo,'userprofilepic':userprofileinfo})
+    return render(request,"home/user_home.html",{'user':userinfo,'userprofilepic':userprofileinfo})
 
 @login_required
 def special(request):
