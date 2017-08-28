@@ -5,12 +5,10 @@
 {% block body_block %}
 <div class="center jumbotron">
     <h1>Reservation Form</h1>
-    <form>
+    <form action="{% url 'home:reserve' pk=user.id %}" enctype="multipart/form-data" method="POST">
         {% csrf_token %}
-        <div class="form-group">
-            <input class="form-control" type="text" name="reserver" value="{{ user.username }}" disabled hidden>
-        </div>
         {% bootstrap_form reservationform %}
+        <h5 for="eventdate">* Datetime input's format is YYYY-MM-DD HH:MM:SS</h5><br>
         <input class="btn btn-primary" type="submit">
     </form>
 </div>

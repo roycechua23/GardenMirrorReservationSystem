@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponseRedirect,HttpResponse
 from django.views.decorators.http import require_http_methods
-
+from home.forms import Reservation, CateringPackages
 # Create your views here.
 
 def index(request):
@@ -118,10 +118,41 @@ def user_home(request,pk):
 
 @login_required
 def loadmake_reservation(request,pk):
-    reservationform = ReservationForm()
     userinfo = User.objects.get(id=pk)
     userprofileinfo = UserProfileInfo.objects.get(user_id=pk)
+    reservationform = ReservationForm(initial={'reserver':userinfo.username})
+    reservationform.is_bound
     return render(request,"home/make_reservation.html",{'user':userinfo,'userprofilepic':userprofileinfo,'reservationform':reservationform})
+
+@login_required
+def reserve(request, pk):
+    userinfo = User.objects.get(id=pk)
+    userprofileinfo = UserProfileInfo.objects.get(user_id=pk)
+
+    if request.method == "POST":
+        # this method is temporary, to be updated
+        
+        reservationform = ReservationForm(request.POST)
+        # check whether it's valid:
+        if reservationform.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            reserver = reservationform.cleaned_data['reserver']
+            package = reservationform.cleaned_data['package']
+            eventtype = reservationform.cleaned_data['eventtype']
+            eventdate = reservationform.cleaned_data['eventdate']
+
+            reservation = Reservation.objects.get_or_create(reserver=reserver,package=package,
+                                                     eventtype=eventtype,eventdate=eventdate)
+            reservation.save()
+            return HttpResponseRedirect(reverse('home:user_home',args=[userinfo.id]))
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        reservationform = ReservationForm()
+
+    return render(request, 'home/make_reservation.html', {'user':userinfo,'userprofilepic':userprofileinfo,'reservationform': reservationform})
 
 @login_required
 def special(request):

@@ -18,14 +18,17 @@ class ReservationForm(forms.ModelForm):
     # package = forms.MultipleChoiceField()
     # eventdate = forms.DateTimeField(widget=forms.DateTimeInput(format=' %H:%M'),label="Event Date")
     # SplitDateTimeField(widget=forms.SplitDateTimeWidget(date_format='%m/%d/%Y',time_format='%H:%M'),label="Event Date")
+    reserver = forms.CharField(widget=forms.HiddenInput())
+    reserver.disabled
 
     class Meta():
         model = Reservation
-        fields = ('package','eventtype','eventdate')
+        fields = ('reserver','package','eventtype','eventdate')
         labels = {
             'eventtype': 'Event Type',
-            'eventdate': 'Event Date'
+            'eventdate': 'Event Date',
         }
         widgets = {
-            'eventdate': forms.SplitDateTimeWidget(date_format='%m/%d/%Y',time_format='%H:%M')
+            'eventdate': forms.DateTimeInput(attrs={'placeholder': 'YYYY-MM-DD HH:MM:SS','id':"eventdate"})
+            # 'eventdate': forms.SplitDateTimeWidget(date_format='%m/%d/%Y',time_format='%H:%M')
         }
