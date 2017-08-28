@@ -24,6 +24,7 @@ class ReservationForm(forms.ModelForm):
         fields = ('package','eventtype','eventdate')
         labels = {
             'eventtype': 'Event Type',
+            'eventdate': 'Event Date'
         }
         widgets = {
             'eventdate': forms.SplitDateTimeWidget(date_format='%m/%d/%Y',time_format='%H:%M')
