@@ -10,11 +10,9 @@
     {% comment %} <link rel="stylesheet" href="{% static 'home/css/main.css' %}"> {% endcomment %}
     <link rel="stylesheet" href="{% static 'bootstrap4/css/bootstrap.min.css' %}">
     <script src="{% static 'popper1/popper.js' %}"></script>
-    <script src="{% static 'jquery3.21/jquery-3.2.1.min.js' %}"></script>
-    <script src="{% static 'bootstrap4/js/bootstrap.js' %}"></script>
     {% bootstrap_css %}
     {% bootstrap_javascript %}
-
+    {% comment %} Referenced JS Scripts are in the bottom {% endcomment %}
     
     
     <title>Ladylynn Sisters</title>
@@ -145,6 +143,9 @@
         </div>
     </div>
 
+    <!-- Bootstrap js and JQuery Scripts -->
+    <script src="{% static 'jquery3.21/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'bootstrap4/js/bootstrap.js' %}"></script>
     <script src="{% static 'home/js/home.js' %}"></script>
 </body>
 </html>

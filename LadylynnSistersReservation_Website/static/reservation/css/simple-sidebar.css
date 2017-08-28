@@ -107,7 +107,7 @@ body {
         padding-left: 0;
     }
     #sidebar-wrapper {
-        width: 250px;
+        width: 200px;
     }
     #wrapper.toggled #sidebar-wrapper {
         width: 0;
