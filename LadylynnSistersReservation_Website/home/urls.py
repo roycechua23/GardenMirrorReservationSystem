@@ -13,7 +13,8 @@ urlpatterns = [
     url(r'^user_signup/$',views.register,name="user_signup"),
     url(r'^user_login/$',views.user_login,name="user_login"),
     url(r'^logout/$',views.user_logout,name="logout"),
-    url(r'^user_home/(?P<pk>[-\w]+)/$',views.user_home,name="user_home"),
-    url(r'^make_reservation/(?P<pk>[-\w]+)/$',views.loadmake_reservation,name="make_reservation"),
-    url(r'^reserve/(?P<pk>[-\w]+)/$',views.reserve,name="reserve")
+    # url(r'^user_home/(?P<pk>[-\w]+)/$',views.user_home,name="user_home"),
+    url(r'^user_home/$',views.user_home,name="user_home"),
+    url(r'^make_reservation/$',views.loadmake_reservation,name="make_reservation"),
+    url(r'^reserve/$',views.reserve,name="reserve")
 ]

@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from home.models import UserProfileInfo,CateringPackages,Reservation
+from django.forms import modelformset_factory
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
@@ -18,12 +19,10 @@ class ReservationForm(forms.ModelForm):
     # package = forms.MultipleChoiceField()
     # eventdate = forms.DateTimeField(widget=forms.DateTimeInput(format=' %H:%M'),label="Event Date")
     # SplitDateTimeField(widget=forms.SplitDateTimeWidget(date_format='%m/%d/%Y',time_format='%H:%M'),label="Event Date")
-    reserver = forms.CharField(widget=forms.HiddenInput())
-    reserver.disabled
 
     class Meta():
         model = Reservation
-        fields = ('reserver','package','eventtype','eventdate')
+        fields = ('package','eventtype','eventdate')
         labels = {
             'eventtype': 'Event Type',
             'eventdate': 'Event Date',

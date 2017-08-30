@@ -1,0 +1,26 @@
+{% extends "home/base_userhome.html" %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+{% block body_block %}
+<div class="jumbotron">
+    <h1>Dashboard</h1>
+    <div></div>
+    <table class="table">
+        <thead>
+            <th>Event name</th>
+            <th>Package</th>
+            <th>Event Type</th>
+            <th>Event Date</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ev1</td>
+                <td>Package 1</td>
+                <td>Birthday</td>
+                <td>2017/10/23</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

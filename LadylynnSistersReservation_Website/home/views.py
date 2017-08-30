@@ -94,7 +94,9 @@ def user_login(request):
                 login(request,user)
                 u = User.objects.get(username=username)
                 request.session['user_id'] = u.id
-                return HttpResponseRedirect(reverse('home:user_home',args=[u.id]))
+                request.session['user_username'] = u.username
+                # return HttpResponseRedirect(reverse('home:user_home',args=[u.id]))
+                return HttpResponseRedirect(reverse('home:user_home'))
             else:
                 return HttpResponse("ACCOUNT NOT ACTIVE")
         else:
@@ -111,42 +113,33 @@ def user_logout(request):
     return HttpResponseRedirect(reverse('index'))
 
 @login_required
-def user_home(request,pk):
-    userinfo = User.objects.get(id=pk)
-    userprofileinfo = UserProfileInfo.objects.get(user_id=pk)
-    return render(request,"home/user_home.html",{'user':userinfo,'userprofilepic':userprofileinfo})
+def user_home(request):
+    userinfo = User.objects.get(id=request.session['user_id'])
+    userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
+    return render(request,"home/dashboard.html",{'user':userinfo,'userprofilepic':userprofileinfo})
 
 @login_required
-def loadmake_reservation(request,pk):
-    userinfo = User.objects.get(id=pk)
-    userprofileinfo = UserProfileInfo.objects.get(user_id=pk)
-    reservationform = ReservationForm(initial={'reserver':userinfo.username})
-    reservationform.is_bound
-    return render(request,"home/make_reservation.html",{'user':userinfo,'userprofilepic':userprofileinfo,'reservationform':reservationform})
+def loadmake_reservation(request):
+    userinfo = User.objects.get(id=request.session['user_id'])
+    userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
+    # reservationform = ReservationForm()
+    packages=CateringPackages.objects.all()
+    return render(request,"home/make_reservation.html",{'user':userinfo,'userprofilepic':userprofileinfo,'packages':packages})
 
 @login_required
-def reserve(request, pk):
-    userinfo = User.objects.get(id=pk)
-    userprofileinfo = UserProfileInfo.objects.get(user_id=pk)
+def reserve(request):
+    userinfo = User.objects.get(id=request.session['user_id'])
+    userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
 
     if request.method == "POST":
         # this method is temporary, to be updated
         
-        reservationform = ReservationForm(request.POST)
-        # check whether it's valid:
-        if reservationform.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            reserver = reservationform.cleaned_data['reserver']
-            package = reservationform.cleaned_data['package']
-            eventtype = reservationform.cleaned_data['eventtype']
-            eventdate = reservationform.cleaned_data['eventdate']
-
-            reservation = Reservation.objects.get_or_create(reserver=reserver,package=package,
-                                                     eventtype=eventtype,eventdate=eventdate)
-            reservation.save()
-            return HttpResponseRedirect(reverse('home:user_home',args=[userinfo.id]))
+        reserver = userinfo.username
+        package = request.POST.get('packages')
+        eventtype = request.POST.get('eventtype')
+        eventdate = request.POST.get('eventdate')
+        print(reserver, package, eventtype, eventdate)
+        return HttpResponseRedirect(reverse('home:user_home'))
 
     # if a GET (or any other method) we'll create a blank form
     else:

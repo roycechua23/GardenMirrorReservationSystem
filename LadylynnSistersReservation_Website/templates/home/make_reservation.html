@@ -1,15 +1,33 @@
-{% extends "home/user_home.html" %}
+{% extends "home/base_userhome.html" %}
 {% load staticfiles %}
 {% load bootstrap4 %}
 
 {% block body_block %}
 <div class="center jumbotron">
     <h1>Reservation Form</h1>
-    <form action="{% url 'home:reserve' pk=user.id %}" enctype="multipart/form-data" method="POST">
+    <form action="{% url 'home:reserve' %}" enctype="multipart/form-data" method="POST">
         {% csrf_token %}
-        {% bootstrap_form reservationform %}
-        <h5 for="eventdate">* Datetime input's format is YYYY-MM-DD HH:MM:SS</h5><br>
-        <input class="btn btn-primary" type="submit">
+        {% comment %} {% bootstrap_form reservationform %} {% endcomment %}
+        <div class="form-group">
+            <label for="packages">Packages</label>
+            <select id="packages" class="form-control">
+                {% for package in packages %}
+                <option id="{{ package.name }}" name="package" value="{{ package.name }}">{{ package.name }} - {{ package.description }}</option>
+                <p id="packagedescription" style="hidden:true;">{{ package.description }}</p>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="eventtype">Event Type</label>
+            <input id="eventtype" name="eventtype" class="form-control" type="text" placeholder="Event Name e.g. Birthday, Reunion, Wedding"> 
+        </div>
+        <div class="form-group">
+            <label for="eventdate" name="eventdate">Event Date</label>
+            <input id="eventdate" class="form-control" type="datetime-local" placeholder="Date and Time">
+        </div>
+        <div class="form-group">
+            <input class="form-control btn btn-primary" type="submit">
+        </div>
     </form>
 </div>
 {% endblock body_block %}
