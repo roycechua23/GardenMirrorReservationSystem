@@ -7,24 +7,34 @@
     <h1>Reservation Form</h1>
     <form action="{% url 'home:reserve' %}" enctype="multipart/form-data" method="POST">
         {% csrf_token %}
-        {% comment %} {% bootstrap_form reservationform %} {% endcomment %}
+      
+        {% bootstrap_form reservationform %}
+        
+         
+        <!-- <div class="form-group">
+            <label for="reserver">Reserver</label>
+            <select id="reserver"  class="form-control" required>
+                <option id="{{ user.username }}" name="reserver" value="{{ user.id }}">{{ user.username }}</option>
+            </select>
+        </div>
         <div class="form-group">
             <label for="packages">Packages</label>
-            <select id="packages" class="form-control">
+            <select id="packages" class="form-control" required>
                 {% for package in packages %}
-                <option id="{{ package.name }}" name="package" value="{{ package.name }}">{{ package.name }} - {{ package.description }}</option>
+                <option id="{{ package.name }}" name="package" value="{{ package.name }}">{{ package.name }}</option>
                 <p id="packagedescription" style="hidden:true;">{{ package.description }}</p>
                 {% endfor %}
             </select>
         </div>
         <div class="form-group">
             <label for="eventtype">Event Type</label>
-            <input id="eventtype" name="eventtype" class="form-control" type="text" placeholder="Event Name e.g. Birthday, Reunion, Wedding"> 
+            <input id="eventtype" name="eventtype" class="form-control" type="text" placeholder="Event Name e.g. Birthday, Reunion, Wedding" required> 
         </div>
         <div class="form-group">
-            <label for="eventdate" name="eventdate">Event Date</label>
-            <input id="eventdate" class="form-control" type="datetime-local" placeholder="Date and Time">
-        </div>
+            <label for="eventdate" name="eventdatelabel">Event Date</label>
+            <input id="eventdate" name="eventdate" class="form-control" type="datetime-local" placeholder="Date and Time" required>
+        </div> -->
+        
         <div class="form-group">
             <input class="form-control btn btn-primary" type="submit">
         </div>

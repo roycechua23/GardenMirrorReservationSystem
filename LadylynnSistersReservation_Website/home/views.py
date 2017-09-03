@@ -115,35 +115,60 @@ def user_logout(request):
 @login_required
 def user_home(request):
     userinfo = User.objects.get(id=request.session['user_id'])
-    userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
-    return render(request,"home/dashboard.html",{'user':userinfo,'userprofilepic':userprofileinfo})
+    if(UserProfileInfo.objects.get(user_id=request.session['user_id']) != ""):
+        userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
+        return render(request,"home/dashboard.html",{'user':userinfo,'userprofilepic':userprofileinfo})
+    else:
+        return render(request,"home/dashboard.html",{'user':userinfo})
+        
+    
 
 @login_required
 def loadmake_reservation(request):
     userinfo = User.objects.get(id=request.session['user_id'])
     userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
-    # reservationform = ReservationForm()
+    reservationform = ReservationForm()
+    reservationform.fields['package'].empty_label=None
+    reservationform.fields['reserver'].empty_label=None
+    reservationform.fields['reserver'].queryset = UserProfileInfo.objects.filter(user__id=request.session['user_id'])
     packages=CateringPackages.objects.all()
-    return render(request,"home/make_reservation.html",{'user':userinfo,'userprofilepic':userprofileinfo,'packages':packages})
+    
+    return render(request,"home/make_reservation.html",{'user':userinfo,'userprofilepic':userprofileinfo,'packages':packages,'reservationform':reservationform})
 
 @login_required
 def reserve(request):
     userinfo = User.objects.get(id=request.session['user_id'])
     userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
+    reservationform = ReservationForm()
+    reservationform.fields['package'].empty_label=None
+    reservationform.fields['reserver'].empty_label=None
+    reservationform.fields['reserver'].queryset = UserProfileInfo.objects.filter(user__id=request.session['user_id'])
 
     if request.method == "POST":
         # this method is temporary, to be updated
-        
-        reserver = userinfo.username
-        package = request.POST.get('packages')
-        eventtype = request.POST.get('eventtype')
-        eventdate = request.POST.get('eventdate')
-        print(reserver, package, eventtype, eventdate)
-        return HttpResponseRedirect(reverse('home:user_home'))
+        # with classbased views
+        # reserver = request.session['user_username']
+        # reserver = request.POST.get('reserver')
+        # package = request.POST.get('packages')
+        # eventtype = request.POST.get('eventtype')
+        # eventdate = request.POST.get('eventdate')
+        # r = Reservation.objects.create(reserver=reserver,package=package,
+                                    #    eventtype=eventtype,eventdate=eventdate)
+        # r.save()
+        # return HttpResponseRedirect(reverse('home:user_home'))
+
+        reservation = ReservationForm(data=request.POST)
+        if reservation.is_valid():
+            print("Reservation happening")
+            reservation.save()
+            return HttpResponseRedirect(reverse('home:user_home'))
+        else:
+            return render(request, 'home/make_reservation.html', {'user':userinfo,'userprofilepic':userprofileinfo,'reservationform': reservationform})
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        reservationform = ReservationForm()
+        # reservationform = ReservationForm()
+        pass
 
     return render(request, 'home/make_reservation.html', {'user':userinfo,'userprofilepic':userprofileinfo,'reservationform': reservationform})
 

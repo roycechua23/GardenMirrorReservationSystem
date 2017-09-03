@@ -16,7 +16,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{% static 'bootstrap4/css/bootstrap.min.css' %}">
     <script src="{% static 'popper1/popper.js' %}"></script>
-    {% bootstrap_css %}
+    {% comment %}
+        {% bootstrap_css %}
+    {% endcomment %}
     
     
     {% comment %} Referenced JS Scripts are in the bottom {% endcomment %}
@@ -40,7 +42,11 @@
                     </a>
                 </li>
                 <li>
-                    <img src="{{ MEDIA_URL }}{{ userprofilepic.profile_pic }}" width=200px style="border-radius:50%;">
+                    {% if userprofilepic.profile_pic %}
+                        <img src="{{ MEDIA_URL }}{{ userprofilepic.profile_pic }}" width=200px style="border-radius:50%;">
+                    {% else %}
+                        <img src="{{ MEDIA_URL }}{{ 'profile_pics/noimage.png' }}" width=200px style="border-radius:50%;">
+                    {% endif %}   
                 </li>
                 <li>
                     <a href="{% url 'home:user_home' %}">Dashboard</a>
@@ -100,7 +106,7 @@
     <script src="{% static 'jquery3.21/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'home/js/user_home.js' %}"></script>
     <script src="{% static 'bootstrap4/js/bootstrap.js' %}"></script>
-    {% bootstrap_javascript %}
+    {% comment %} {% bootstrap_javascript %} {% endcomment %}
 </body>
 
 </html>
