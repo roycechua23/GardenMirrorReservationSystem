@@ -133,6 +133,18 @@ def loadmake_reservation(request):
     return render(request,"home/make_reservation.html",{'user':userinfo,'userprofilepic':userprofileinfo,'packages':packages,'reservationform':reservationform})
 
 @login_required
+def loadupdate_reservation(request):
+    reservers = UserProfileInfo.objects.all()
+    userinfo = User.objects.get(id=request.session['user_id'])
+    userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
+    reservationform = ReservationForm()
+    reservationform.fields['package'].empty_label=None
+    reservationform.fields['reserver'].empty_label=None
+    reservationform.fields['reserver'].queryset = UserProfileInfo.objects.filter(user__id=request.session['user_id'])
+    packages=CateringPackages.objects.all()
+    return render(request,"home/update_reservation.html",{'user':userinfo,'userprofilepic':userprofileinfo,'packages':packages,'reservationform':reservationform,'reservers':reservers})
+
+@login_required
 def reserve(request):
     userinfo = User.objects.get(id=request.session['user_id'])
     userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])

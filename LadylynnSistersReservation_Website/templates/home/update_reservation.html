@@ -1,0 +1,18 @@
+{% extends "home/base_userhome.html" %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+{% block body_block %}
+<div class="center jumbotron">
+    <h1>Reservation Form</h1>
+    <form action="{% url 'home:reserve' %}" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+      
+        {% bootstrap_form reservationform %}
+        
+        <div class="form-group">
+            <input class="form-control btn btn-primary" type="submit">
+        </div>
+    </form>
+</div>
+{% endblock body_block %}

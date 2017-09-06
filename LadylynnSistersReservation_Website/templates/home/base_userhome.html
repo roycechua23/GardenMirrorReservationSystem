@@ -56,7 +56,7 @@
                     <a href="#" class="dropdown-toggle" id="reservationdropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reservation</a>
                     <div class="dropdown-menu" aria-labelledby="reservationdropdown" style="background-color:black; color:white;">
                         <a class="dropdown-item" href="{% url 'home:make_reservation' %}">Make Reservation</a>
-                        <a class="dropdown-item" href="#">Edit Reservation</a>
+                        <a class="dropdown-item" href="{% url 'home:update_reservation' %}">Update Reservation</a>
                         <a class="dropdown-item" href="#">Cancel Reservation</a>
                     </div>
                 </li>
