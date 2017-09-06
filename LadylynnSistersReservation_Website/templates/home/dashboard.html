@@ -14,12 +14,18 @@
             <th>Event Date</th>
         </thead>
         <tbody>
-            <tr>
-                <td>ev1</td>
-                <td>Package 1</td>
-                <td>Birthday</td>
-                <td>2017/10/23</td>
-            </tr>
+            {% if reservations %}
+                {% for reservation in reservations %}
+                    <tr>
+                     <td>{{ reservation }}</td>
+                     <td>{{ reservation.package }}</td>
+                     <td>{{ reservation.eventtype }}</td>
+                     <td>{{ reservation.eventdate }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <h1>No Reservations yet!</h1>
+            {% endif %}
         </tbody>
     </table>
 </div>

@@ -115,13 +115,10 @@ def user_logout(request):
 @login_required
 def user_home(request):
     userinfo = User.objects.get(id=request.session['user_id'])
-    if(UserProfileInfo.objects.get(user_id=request.session['user_id']) != ""):
-        userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
-        return render(request,"home/dashboard.html",{'user':userinfo,'userprofilepic':userprofileinfo})
-    else:
-        return render(request,"home/dashboard.html",{'user':userinfo})
-        
-    
+    userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
+    reservations = Reservation.objects.filter(reserver_id__user_id=request.session['user_id']).order_by('eventdate')
+    print(reservations)
+    return render(request,"home/dashboard.html",{'user':userinfo,'userprofilepic':userprofileinfo,'reservations':reservations})
 
 @login_required
 def loadmake_reservation(request):
