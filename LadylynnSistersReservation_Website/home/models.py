@@ -6,7 +6,7 @@ from django.utils import timezone
 class UserProfileInfo(models.Model):
     
     user = models.OneToOneField(User)
-
+    contact = models.CharField(max_length=15)
     # please pip install pillow before using 
     # Image field
     profile_pic = models.ImageField(blank=True,upload_to='profile_pics')

@@ -5,6 +5,15 @@
 {% block body_block %}
 <div class="center jumbotron">
     <h1>Reservation Form</h1>
+    <div class="form-group">
+        <label for="events">Your Events</label>
+        <select id="events" name="events" class="form-control">
+            {% for reserver in reservers %}
+            <option id="{{ reserver }}">{{ reserver }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    
     <form action="{% url 'home:reserve' %}" enctype="multipart/form-data" method="POST">
         {% csrf_token %}
       

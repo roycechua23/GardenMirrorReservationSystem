@@ -134,7 +134,7 @@ def loadmake_reservation(request):
 
 @login_required
 def loadupdate_reservation(request):
-    reservers = UserProfileInfo.objects.all()
+    reservers = Reservation.objects.filter(reserver_id__user_id=request.session['user_id']).order_by('eventdate')
     userinfo = User.objects.get(id=request.session['user_id'])
     userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
     reservationform = ReservationForm()
@@ -143,6 +143,12 @@ def loadupdate_reservation(request):
     reservationform.fields['reserver'].queryset = UserProfileInfo.objects.filter(user__id=request.session['user_id'])
     packages=CateringPackages.objects.all()
     return render(request,"home/update_reservation.html",{'user':userinfo,'userprofilepic':userprofileinfo,'packages':packages,'reservationform':reservationform,'reservers':reservers})
+
+@login_required
+def retrieveEvent(request):
+    request.POST.get('event')
+
+    return json.dumps()
 
 @login_required
 def reserve(request):
@@ -167,13 +173,16 @@ def reserve(request):
         # return HttpResponseRedirect(reverse('home:user_home'))
 
         reservation = ReservationForm(data=request.POST)
+        print(reservation['eventdate'])
+        print(request.POST.get('eventdate'))
         if reservation.is_valid():
             print("Reservation happening")
             reservation.save()
             return HttpResponseRedirect(reverse('home:user_home'))
         else:
+            print(request.POST.get('eventdate'))
             return render(request, 'home/make_reservation.html', {'user':userinfo,'userprofilepic':userprofileinfo,'reservationform': reservationform})
-
+            
     # if a GET (or any other method) we'll create a blank form
     else:
         # reservationform = ReservationForm()

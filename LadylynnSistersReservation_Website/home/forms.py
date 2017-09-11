@@ -5,6 +5,7 @@ from django.forms import modelformset_factory
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
+    contact = forms.CharField()
 
     class Meta():
         model = User
