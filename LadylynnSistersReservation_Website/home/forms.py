@@ -9,9 +9,10 @@ class UserForm(forms.ModelForm):
 
     class Meta():
         model = User
-        fields = ('first_name','last_name','email','username','password')
+        fields = ('first_name','last_name','email','contact','username','password')
         labels = {
-            'email': 'Email Address'
+            'email': 'Email Address',
+            'contact': 'Contact Number (ex. 09061800313)'
         }
 
 class UserProfileInfoForm(forms.ModelForm):
@@ -21,17 +22,24 @@ class UserProfileInfoForm(forms.ModelForm):
 
 class ReservationForm(forms.ModelForm):
     # package = forms.MultipleChoiceField()
-    # eventdate = forms.DateTimeField(widget=forms.DateTimeInput(format=' %H:%M'),label="Event Date")
+    # event_date = forms.DateTimeField(widget=forms.DateTimeInput(format=' %H:%M'),label="Event Date")
     # SplitDateTimeField(widget=forms.SplitDateTimeWidget(date_format='%m/%d/%Y',time_format='%H:%M'),label="Event Date")
     # reserver = forms.ModelChoiceField(queryset=UserProfileInfo.objects.all(),empty_label=None,label="Reserver")
 
     class Meta():
         model = Reservation
-        fields = ('reserver','package','eventtype','eventdate')
+        fields = ('reserver','package','event_type','event_date','event_timestart','event_timeend')
         labels = {
-            'eventtype': 'Event Type',
-            'eventdate': 'Event Date',
+            # labels for the html <label> equivalent
+            'event_type': 'Event Type', 
+            'event_date': 'Event Date',
+            'event_timestart': 'Event Time Start',
+            'event_timeend': 'Event Time End',
         }
         widgets = {
-            'eventdate': forms.DateTimeInput(attrs={'placeholder': 'YYYY-MM-DD HH:MM:SS','id':"eventdate"}),
+            # equivalent for the html attribute placeholder
+            'event_date': forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD','id':"event_date"}),
+            'event_timestart': forms.TimeInput(attrs={'placeholder': 'HH:MM','id':"event_timestart"}),
+            'event_timeend': forms.TimeInput(attrs={'placeholder': 'HH:MM','id':"event_timeend"}),
+        
         }

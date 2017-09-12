@@ -12,6 +12,8 @@
             <th>Package</th>
             <th>Event Type</th>
             <th>Event Date</th>
+            <th>Event Time Start</th>
+            <th>Event Time End</th>
         </thead>
         <tbody>
             {% if reservations %}
@@ -19,8 +21,10 @@
                     <tr>
                      <td>{{ reservation }}</td>
                      <td>{{ reservation.package }}</td>
-                     <td>{{ reservation.eventtype }}</td>
-                     <td>{{ reservation.eventdate }}</td>
+                     <td>{{ reservation.event_type }}</td>
+                     <td>{{ reservation.event_date }}</td>
+                     <td>{{ reservation.event_timestart }}</td>
+                     <td>{{ reservation.event_timeend }}</td>
                     </tr>
                 {% endfor %}
             {% else %}

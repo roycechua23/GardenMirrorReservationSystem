@@ -116,7 +116,7 @@ def user_logout(request):
 def user_home(request):
     userinfo = User.objects.get(id=request.session['user_id'])
     userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
-    reservations = Reservation.objects.filter(reserver_id__user_id=request.session['user_id']).order_by('eventdate')
+    reservations = Reservation.objects.filter(reserver_id__user_id=request.session['user_id']).order_by('event_date')
     print(reservations)
     return render(request,"home/dashboard.html",{'user':userinfo,'userprofilepic':userprofileinfo,'reservations':reservations})
 
@@ -134,7 +134,7 @@ def loadmake_reservation(request):
 
 @login_required
 def loadupdate_reservation(request):
-    reservers = Reservation.objects.filter(reserver_id__user_id=request.session['user_id']).order_by('eventdate')
+    reservers = Reservation.objects.filter(reserver_id__user_id=request.session['user_id']).order_by('event_date')
     userinfo = User.objects.get(id=request.session['user_id'])
     userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
     reservationform = ReservationForm()
@@ -146,7 +146,7 @@ def loadupdate_reservation(request):
 
 @login_required
 def retrieveEvent(request):
-    request.POST.get('event')
+    request.GET.get('event')
 
     return json.dumps()
 
@@ -162,30 +162,17 @@ def reserve(request):
     if request.method == "POST":
         # this method is temporary, to be updated
         # with classbased views
-        # reserver = request.session['user_username']
-        # reserver = request.POST.get('reserver')
-        # package = request.POST.get('packages')
-        # eventtype = request.POST.get('eventtype')
-        # eventdate = request.POST.get('eventdate')
-        # r = Reservation.objects.create(reserver=reserver,package=package,
-                                    #    eventtype=eventtype,eventdate=eventdate)
-        # r.save()
-        # return HttpResponseRedirect(reverse('home:user_home'))
-
         reservation = ReservationForm(data=request.POST)
-        print(reservation['eventdate'])
-        print(request.POST.get('eventdate'))
         if reservation.is_valid():
             print("Reservation happening")
             reservation.save()
             return HttpResponseRedirect(reverse('home:user_home'))
         else:
-            print(request.POST.get('eventdate'))
             return render(request, 'home/make_reservation.html', {'user':userinfo,'userprofilepic':userprofileinfo,'reservationform': reservationform})
             
     # if a GET (or any other method) we'll create a blank form
     else:
-        # reservationform = ReservationForm()
+        reservationform = ReservationForm()
         pass
 
     return render(request, 'home/make_reservation.html', {'user':userinfo,'userprofilepic':userprofileinfo,'reservationform': reservationform})

@@ -103,8 +103,21 @@
 
 
     <!-- Bootstrap and JQuery Scripts -->
-    <script src="{% static 'jquery3.21/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'jquery/jquery-3.2.1.min.js' %}"></script>
+    {% comment %} Additional references for jquery functionalities {% endcomment %}
+    <script src="{% static 'jquery/jquery-ui.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'jquery/jquery-ui.min.css' %}">
+    <link rel="stylesheet" href="{% static 'jquery/jquery-ui.structure.min.css' %}">
+    <link rel="stylesheet" href="{% static 'jquery/jquery-ui.theme.min.css' %}">
+    {% comment %} DateTimeWidget References {% endcomment %}
+    <script src="{% static 'datetimewidgets/bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}"></script>
+    <script src="{% static 'datetimewidgets/jonthornton-timepicker/jquery.timepicker.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'datetimewidgets/bootstrap-datepicker/css/bootstrap-datepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'datetimewidgets/jonthornton-timepicker/jquery.timepicker.css' %}">
+
+    {% comment %} Main js files {% endcomment %}
     <script src="{% static 'home/js/user_home.js' %}"></script>
+    <script src="{% static 'home/js/make_reservation.js' %}"></script>
     <script src="{% static 'bootstrap4/js/bootstrap.js' %}"></script>
     {% comment %} {% bootstrap_javascript %} {% endcomment %}
 </body>

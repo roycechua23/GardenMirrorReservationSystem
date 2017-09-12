@@ -9,7 +9,7 @@
         <label for="events">Your Events</label>
         <select id="events" name="events" class="form-control">
             {% for reserver in reservers %}
-            <option id="{{ reserver }}">{{ reserver }}</option>
+            <option id="{{ reserver.pk }}">{{ reserver }}</option>
             {% endfor %}
         </select>
     </div>
