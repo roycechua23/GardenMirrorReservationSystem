@@ -170,7 +170,7 @@ def reserve(request):
         else:
             print("Reservation did not proceed")
             return render(request, 'home/make_reservation.html', {'user':userinfo,'userprofilepic':userprofileinfo,'reservationform': reservationform})
-            
+    
     # if a GET (or any other method) we'll create a blank form
     else:
         reservationform = ReservationForm()
@@ -184,3 +184,4 @@ def special(request):
 def rtest(request):
     return render(request,"home/index.html",context=None)
 
+#padron
