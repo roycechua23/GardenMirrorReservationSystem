@@ -168,12 +168,12 @@ def reserve(request):
             reservation.save()
             return HttpResponseRedirect(reverse('home:user_home'))
         else:
+            print("Reservation did not proceed")
             return render(request, 'home/make_reservation.html', {'user':userinfo,'userprofilepic':userprofileinfo,'reservationform': reservationform})
             
     # if a GET (or any other method) we'll create a blank form
     else:
         reservationform = ReservationForm()
-        pass
 
     return render(request, 'home/make_reservation.html', {'user':userinfo,'userprofilepic':userprofileinfo,'reservationform': reservationform})
 

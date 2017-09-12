@@ -1,10 +1,5 @@
-
-// $( function() {
-//     $( "#event_date" ).datepicker();
-//     $( "#format" ).on( "change", function() {
-//       $( "#event_date" ).datepicker( "option", "dateFormat", "yyyy-mm-dd" );
-//     });
-//   } );
-$('#event_date').datepicker();
-$('#event_timestart').timepicker({'timeFormat': 'h:i A',});
-$('#event_timeend').timepicker({'timeFormat': 'h:i A',});
+$(document).ready(function() {
+    $('#event_date').datepicker({format: 'yyyy-mm-dd',});
+    $('#event_timestart').timepicker({'timeFormat': 'g:i a', 'scrollDefault': 'now'});
+    $('#event_timeend').timepicker({'timeFormat': 'g:i a', 'scrollDefault': 'now'});
+});

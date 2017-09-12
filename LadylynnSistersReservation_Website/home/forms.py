@@ -25,7 +25,6 @@ class ReservationForm(forms.ModelForm):
     # event_date = forms.DateTimeField(widget=forms.DateTimeInput(format=' %H:%M'),label="Event Date")
     # SplitDateTimeField(widget=forms.SplitDateTimeWidget(date_format='%m/%d/%Y',time_format='%H:%M'),label="Event Date")
     # reserver = forms.ModelChoiceField(queryset=UserProfileInfo.objects.all(),empty_label=None,label="Reserver")
-
     class Meta():
         model = Reservation
         fields = ('reserver','package','event_type','event_date','event_timestart','event_timeend')

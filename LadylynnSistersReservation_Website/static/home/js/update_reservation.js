@@ -1,10 +1,10 @@
 $(document).ready(function() {
     // JQuery code to be added in here.
-    $("#register").click(function () {
+    $("#events").click(function () {
         
             $.ajax({
-                    url: '/register',
-                    data: $('#memberform').serialize(),
+                    url: '/home/retrieveEvent',
+                    data: $('#events').val().serialize(),
                     type: 'POST',
                     success: function(response) {
                         $("#success").toggleClass("alert-popup");
