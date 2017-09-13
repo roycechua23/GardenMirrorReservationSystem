@@ -29,6 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = 'home/user_home' # if logged in, it will redirect to this URL
+LOGIN_URL = '/' # if not logged in, it will redirect to this URL
 
 # Application definition
 

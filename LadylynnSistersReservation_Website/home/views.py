@@ -5,7 +5,7 @@ from home.models import User,UserProfileInfo
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login,logout
-from django.http import HttpResponseRedirect,HttpResponse
+from django.http import HttpResponseRedirect,HttpResponse, JsonResponse
 from django.views.decorators.http import require_http_methods
 from home.forms import Reservation, CateringPackages
 # Create your views here.
@@ -146,9 +146,28 @@ def loadupdate_reservation(request):
 
 @login_required
 def retrieveEvent(request):
-    request.GET.get('event')
-
-    return json.dumps()
+    event = request.GET.get('event', None)
+    events = Reservation.objects.all()
+    for e in events:
+        if str(e)==event:
+            print("Caught")
+            p = CateringPackages.objects.get(name=str(e.package))
+            package = p.id
+            eventtype = str(e.event_type)
+            eventdate = e.event_date
+            eventtimestart = e.event_timestart
+            eventtimeend = e.event_timeend
+            print(package,eventtype,eventdate,eventtimestart,eventtimeend)
+        else:
+            pass
+    data = {
+        'package':package,
+        'eventtype':eventtype,
+        'eventdate':e.event_date,
+        'eventtimestart': e.event_timestart,
+        'eventtimeend': e.event_timeend,
+    }
+    return JsonResponse(data)
 
 @login_required
 def reserve(request):
@@ -172,6 +191,25 @@ def reserve(request):
             return render(request, 'home/make_reservation.html', {'user':userinfo,'userprofilepic':userprofileinfo,'reservationform': reservationform})
     
     # if a GET (or any other method) we'll create a blank form
+        reservation = ReservationForm(data=request.POST)
+    else:
+        reservationform = ReservationForm()
+
+    return render(request, 'home/make_reservation.html', {'user':userinfo,'userprofilepic':userprofileinfo,'reservationform': reservationform})
+
+@login_required
+def update(request):
+    userinfo = User.objects.get(id=request.session['user_id'])
+    userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
+    reservationform = ReservationForm()
+    reservationform.fields['package'].empty_label=None
+    reservationform.fields['reserver'].empty_label=None
+    reservationform.fields['reserver'].queryset = UserProfileInfo.objects.filter(user__id=request.session['user_id'])
+
+    if request.method == 'POST':
+        reservation = ReservationForm(data=request.POST)
+        pass
+
     else:
         reservationform = ReservationForm()
 
