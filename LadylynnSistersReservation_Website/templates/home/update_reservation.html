@@ -15,7 +15,7 @@
         </select>
     </div>
     
-    <form action="{% url 'home:reserve' %}" enctype="multipart/form-data" method="POST">
+    <form action="{% url 'home:update' %}" enctype="multipart/form-data" method="POST">
         {% csrf_token %}
       
         {% bootstrap_form reservationform %}

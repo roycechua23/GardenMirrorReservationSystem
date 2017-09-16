@@ -28,3 +28,4 @@ urlpatterns = [
     url(r'^special/',hviews.special,name="special"),
     url(r'^rtest/',hviews.rtest,name="rtest")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

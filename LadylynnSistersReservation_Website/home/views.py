@@ -199,21 +199,18 @@ def reserve(request):
 
 @login_required
 def update(request):
-    userinfo = User.objects.get(id=request.session['user_id'])
-    userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
-    reservationform = ReservationForm()
-    reservationform.fields['package'].empty_label=None
-    reservationform.fields['reserver'].empty_label=None
-    reservationform.fields['reserver'].queryset = UserProfileInfo.objects.filter(user__id=request.session['user_id'])
 
     if request.method == 'POST':
         reservation = ReservationForm(data=request.POST)
+        print(reservation.is_valid())
+        if reservation.is_valid():
+            reservation.save()
+            print("Updated")
+            return HttpResponseRedirect(reverse('home:user_home'))
+    else:
         pass
 
-    else:
-        reservationform = ReservationForm()
-
-    return render(request, 'home/make_reservation.html', {'user':userinfo,'userprofilepic':userprofileinfo,'reservationform': reservationform})
+    return HttpResponseRedirect(reverse('home:update_reservation'))
 
 @login_required
 def special(request):
