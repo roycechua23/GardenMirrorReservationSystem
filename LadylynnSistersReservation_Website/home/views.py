@@ -200,8 +200,9 @@ def reserve(request):
 @login_required
 def update(request):
 
+    
     if request.method == 'POST':
-        reservation = ReservationForm(data=request.POST)
+        reservation = ReservationForm(data=request.POST, instance=0)
         print(reservation.is_valid())
         if reservation.is_valid():
             reservation.save()
