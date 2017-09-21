@@ -63,9 +63,11 @@ class UpdateForm(forms.ModelForm):
     # reserver = forms.ModelChoiceField(queryset=UserProfileInfo.objects.all(),empty_label=None,label="Reserver")
     class Meta():
         model = Reservation
-        fields = ('reserver','name','venue','package','event_type','foodselections','event_date','event_timestart','event_timeend')
+        fields = ('reserver','name','venue','package','event_type','foodselections','event_date','event_timestart','event_timeend',"remarks")
         labels = {
             # labels for the html <label> equivalent
+            'name': 'Event Name',
+            'foodselections': 'Food Selections',
             'event_type': 'Event Type', 
             'event_date': 'Event Date',
             'event_timestart': 'Event Time Start',
@@ -76,6 +78,6 @@ class UpdateForm(forms.ModelForm):
             'event_date': forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD','id':"event_date"}),
             'event_timestart': forms.TimeInput(attrs={'placeholder': 'HH:MM','id':"event_timestart"}),
             'event_timeend': forms.TimeInput(attrs={'placeholder': 'HH:MM','id':"event_timeend"}),
-        
+            'remarks': forms.Textarea(attrs={'placeholder':'You can write additional notes regarding your reservation here..'}),
         }
 

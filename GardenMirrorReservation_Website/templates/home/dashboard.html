@@ -10,6 +10,7 @@
         <thead>
             <th>Event name</th>
             <th>Package</th>
+            <th>Venue</th>
             <th>Event Type</th>
             <th>Event Date</th>
             <th>Event Time Start</th>
@@ -19,8 +20,9 @@
             {% if reservations %}
                 {% for reservation in reservations %}
                     <tr>
-                     <td>{{ reservation }}</td>
+                     <td>{{ reservation.name }}</td>
                      <td>{{ reservation.package }}</td>
+                     <td>{{ reservation.venue }}</td>
                      <td>{{ reservation.event_type }}</td>
                      <td>{{ reservation.event_date }}</td>
                      <td>{{ reservation.event_timestart }}</td>

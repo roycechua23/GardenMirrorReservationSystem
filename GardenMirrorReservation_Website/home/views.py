@@ -1,6 +1,9 @@
 from django.shortcuts import render,redirect
+import requests
+from datetime import *
+
 from home.forms import UserForm,UserProfileInfoForm,ReservationForm, UpdateForm
-from home.models import User,UserProfileInfo
+from home.models import User,UserProfileInfo, CateringPackage, EventArea
 
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
@@ -117,7 +120,7 @@ def user_home(request):
     userinfo = User.objects.get(id=request.session['user_id'])
     userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
     reservations = Reservation.objects.filter(reserver_id__user_id=request.session['user_id']).order_by('event_date')
-    print(reservations)
+    # print(reservations)
     return render(request,"home/dashboard.html",{'user':userinfo,'userprofilepic':userprofileinfo,'reservations':reservations})
 
 @login_required
@@ -152,20 +155,30 @@ def retrieveEvent(request):
         if str(e)==event:
             print("Caught")
             p = CateringPackage.objects.get(name=str(e.package))
+            v = EventArea.objects.get(name=e.venue)
+            eventname = e.name
+            venue = v.id
             package = p.id
             eventtype = str(e.event_type)
+            foodselections = e.foodselections
             eventdate = e.event_date
-            eventtimestart = e.event_timestart
-            eventtimeend = e.event_timeend
-            print(package,eventtype,eventdate,eventtimestart,eventtimeend)
+            eventtimestart = time.strftime(e.event_timestart,"%I:%M %p")
+            eventtimeend = time.strftime(e.event_timeend,"%I:%M %p")
+            remarks = e.remarks
+            # print(package,eventtype,eventdate,eventtimestart,eventtimeend)
+            print(eventtimestart,eventtimeend)
         else:
             pass
     data = {
+        'eventname': eventname,
+        'venue': venue,
         'package':package,
         'eventtype':eventtype,
+        'foodselections':foodselections,
         'eventdate':eventdate,
         'eventtimestart': eventtimestart,
         'eventtimeend': eventtimeend,
+        'remarks':remarks,
     }
     return JsonResponse(data)
 
@@ -183,8 +196,15 @@ def reserve(request):
         # with classbased views
         reservation = ReservationForm(data=request.POST)
         if reservation.is_valid():
-            print("Reservation happening")
+            # print("Reservation happening")
             reservation.save()
+            r = Reservation.objects.filter(name=request.POST.get('name')).order_by('currentdate')[0]
+            # print(r.reserver)
+            msg = "{} made a reservation.\nEvent name: {}\nEvent type: {}\nEvent date: {}\nStart time: {}\nEnd time: {}\n--- end of message ---".format(r.reserver,r.name,r.event_type,r.event_date,r.event_timestart,r.event_timeend)
+            # print(msg)
+            url = 'http://www.isms.com.my/isms_send.php?un=%s&pwd=%s&dstno=%d&msg=%s&type=1&sendid=GardenMirrorEventsPlace'%("royce236","261523",639060677392,msg)
+            txt = requests.get(url)
+            # print(txt)
             return HttpResponseRedirect(reverse('home:user_home'))
         else:
             print("Reservation did not proceed")
@@ -199,12 +219,12 @@ def reserve(request):
 
 @login_required
 def update(request):
-    e = Reservation.objects.get(id=11)
     if request.method == 'POST':
-        reservation = UpdateForm(data=request.POST)
+        r = Reservation.objects.get(name=request.POST.get('name'))
+        reservation = UpdateForm(data=request.POST,instance=r)
         print(reservation.is_valid())
         if reservation.is_valid():
-            # reservation.save()
+            reservation.save()
             print("Updated")
             return HttpResponseRedirect(reverse('home:user_home'))
     else:

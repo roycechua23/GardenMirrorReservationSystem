@@ -9,6 +9,7 @@ $(document).ready(function() {
         // $("#event_timeend").val("9:30 pm");
         var event = $(this).val();
         if(event==="----------"){
+            $("#id_name").val("");
             $("#id_package").val(1);
             $("#id_event_type").val("");
             $("#event_date").val("");
@@ -24,14 +25,16 @@ $(document).ready(function() {
                     // type: 'POST',
                     dataType:'json',
                     success: function(data) {
-                       
-                        console.log(data.eventtimestart)
-                        console.log(data.eventtimeend)
+
+                        $("#id_name").val(data.eventname);
                         $("#id_package").val(data.package);
+                        $("#id_venue").val(data.venue);
                         $("#id_event_type").val(data.eventtype);
+                        $("#id_foodselections").val(data.foodselections);
                         $("#event_date").val(data.eventdate);
                         $("#event_timestart").val(data.eventtimestart);
                         $("#event_timeend").val(data.eventtimeend);
+                        $("#id_remarks").val(data.remarks);
                         // $("#id_package").val("Starter Package")
                         // $('#memberform').trigger("reset");
                         // $('#afterreg').modal('show');
