@@ -51,7 +51,7 @@ class Reservation(models.Model):
     event_date = models.DateField()
     event_timestart = models.TimeField()
     event_timeend = models.TimeField()
-    remarks = models.CharField(max_length=500)
+    remarks = models.CharField(max_length=500,null=True)
     status = models.BooleanField(default=False)
 
     def completed(self):
