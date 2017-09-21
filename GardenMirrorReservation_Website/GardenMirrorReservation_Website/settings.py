@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'GardenMirrorReservation_Website.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'LadylynnSistersReservation_DB',
+        'NAME': 'GardenMirrorReservation_db',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
