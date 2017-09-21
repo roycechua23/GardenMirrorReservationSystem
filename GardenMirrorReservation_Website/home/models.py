@@ -30,17 +30,18 @@ class EventArea(models.Model):
 
     name = models.CharField(max_length=100,unique=True)
     description = models.CharField(max_length=500)
-    capacity = models.PositiveIntegerField()
 
 class Foods(models.Model):
     # To be updated when crud operations on reservation are working
     food_name = models.CharField(max_length=100)
-    food_package = models.ManyToManyField("CateringPackages")
 
 class Reservation(models.Model):
     
     reserver = models.ForeignKey('UserProfileInfo', related_name='reservers', on_delete=models.CASCADE)
+    name = models.CharField(max_length=100,default="{} event".format(reserver))
+    venue = models.ForeignKey('EventArea',related_name='eventarea',on_delete=models.CASCADE)
     package = models.ForeignKey('CateringPackages',related_name='packages',on_delete=models.CASCADE)
+    foodselections = models.CharField(max_length=1000,default="GM's Choice")
     event_type = models.CharField(max_length=100)
     currentdate = models.DateTimeField(auto_now=True)
     event_date = models.DateField()
@@ -51,10 +52,6 @@ class Reservation(models.Model):
     def completed(self):
         self.status = True
         self.save()
-
-    def completed_eventslist(self):
-        eventname = "{} {} ({})".format(str(self.reserver.user.first_name),self.event_type,self.reserver)
-        return eventname
 
     def __str__(self):
         eventname = "{} {} ({})".format(str(self.reserver.user.first_name),self.event_type,self.reserver)
