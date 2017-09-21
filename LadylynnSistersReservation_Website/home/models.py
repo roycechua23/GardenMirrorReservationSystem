@@ -30,6 +30,7 @@ class EventArea(models.Model):
 
     name = models.CharField(max_length=100,unique=True)
     description = models.CharField(max_length=500)
+    capacity = models.PositiveIntegerField()
 
 class Foods(models.Model):
     # To be updated when crud operations on reservation are working
