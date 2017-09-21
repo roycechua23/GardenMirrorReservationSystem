@@ -42,10 +42,10 @@ class Food(models.Model):
 class Reservation(models.Model):
     
     reserver = models.ForeignKey('UserProfileInfo', related_name='reserver', on_delete=models.CASCADE)
-    name = models.CharField(max_length=100,default="{} event".format(reserver))
+    name = models.CharField(max_length=100,null=True)
     venue = models.ForeignKey('EventArea',related_name='eventarea',on_delete=models.CASCADE,default=1)
     package = models.ForeignKey('CateringPackage',related_name='package',on_delete=models.CASCADE)
-    foodselections = models.CharField(max_length=1000,default="GM's Choice")
+    foodselections = models.CharField(max_length=1000,null=True)
     event_type = models.CharField(max_length=100)
     currentdate = models.DateTimeField(auto_now=True)
     event_date = models.DateField()
