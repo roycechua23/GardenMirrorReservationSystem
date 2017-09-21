@@ -16,31 +16,35 @@ class UserProfileInfo(models.Model):
     def __str__(self):
         return self.user.username
 
-class CateringPackages(models.Model):
-    
-    name = models.CharField(max_length=100,blank=False)
-    pax = models.PositiveIntegerField(default=50,null=False)
-    description = models.CharField(max_length=256,blank=False)
-    price = models.PositiveIntegerField()
-    
-    def __str__(self):
-        return self.name
-
 class EventArea(models.Model):
 
     name = models.CharField(max_length=100,unique=True)
     description = models.CharField(max_length=500)
 
-class Foods(models.Model):
+    def __str__(self):
+        return self.name
+
+class CateringPackage(models.Model):
+    
+    name = models.CharField(max_length=100,blank=False)
+    pax = models.PositiveIntegerField(default=50,null=False)
+    description = models.CharField(max_length=256,blank=False)
+    # area  = models.ForeignKey('EventArea', related_name='area', on_delete=models.CASCADE)
+    price = models.PositiveIntegerField()
+    
+    def __str__(self):
+        return self.name
+
+class Food(models.Model):
     # To be updated when crud operations on reservation are working
     food_name = models.CharField(max_length=100)
 
 class Reservation(models.Model):
     
-    reserver = models.ForeignKey('UserProfileInfo', related_name='reservers', on_delete=models.CASCADE)
+    reserver = models.ForeignKey('UserProfileInfo', related_name='reserver', on_delete=models.CASCADE)
     name = models.CharField(max_length=100,default="{} event".format(reserver))
-    venue = models.ForeignKey('EventArea',related_name='eventarea',on_delete=models.CASCADE)
-    package = models.ForeignKey('CateringPackages',related_name='packages',on_delete=models.CASCADE)
+    venue = models.ForeignKey('EventArea',related_name='eventarea',on_delete=models.CASCADE,default=1)
+    package = models.ForeignKey('CateringPackage',related_name='package',on_delete=models.CASCADE)
     foodselections = models.CharField(max_length=1000,default="GM's Choice")
     event_type = models.CharField(max_length=100)
     currentdate = models.DateTimeField(auto_now=True)

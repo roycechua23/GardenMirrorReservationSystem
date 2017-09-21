@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
-from home.models import UserProfileInfo,CateringPackages,Reservation
-from django.forms import modelformset_factory
+from home.models import UserProfileInfo,CateringPackage,Reservation
+# from django.forms import modelformset_factory
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
@@ -27,7 +27,7 @@ class ReservationForm(forms.ModelForm):
     # reserver = forms.ModelChoiceField(queryset=UserProfileInfo.objects.all(),empty_label=None,label="Reserver")
     class Meta():
         model = Reservation
-        fields = ('reserver','package','event_type','event_date','event_timestart','event_timeend')
+        fields = ('reserver','name','venue','package','event_type','foodselections','event_date','event_timestart','event_timeend')
         labels = {
             # labels for the html <label> equivalent
             'event_type': 'Event Type', 
@@ -50,7 +50,7 @@ class UpdateForm(forms.ModelForm):
     # reserver = forms.ModelChoiceField(queryset=UserProfileInfo.objects.all(),empty_label=None,label="Reserver")
     class Meta():
         model = Reservation
-        fields = ('reserver','package','event_type','event_date','event_timestart','event_timeend')
+        fields = ('reserver','name','venue','package','event_type','foodselections','event_date','event_timestart','event_timeend')
         labels = {
             # labels for the html <label> equivalent
             'event_type': 'Event Type', 

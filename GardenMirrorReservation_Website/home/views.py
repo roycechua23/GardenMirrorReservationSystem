@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponseRedirect,HttpResponse, JsonResponse
 from django.views.decorators.http import require_http_methods
-from home.forms import Reservation, CateringPackages
+from home.forms import Reservation, CateringPackage
 # Create your views here.
 
 def index(request):
@@ -128,7 +128,7 @@ def loadmake_reservation(request):
     reservationform.fields['package'].empty_label=None
     reservationform.fields['reserver'].empty_label=None
     reservationform.fields['reserver'].queryset = UserProfileInfo.objects.filter(user__id=request.session['user_id'])
-    packages=CateringPackages.objects.all()
+    packages=CateringPackage.objects.all()
     
     return render(request,"home/make_reservation.html",{'user':userinfo,'userprofilepic':userprofileinfo,'packages':packages,'reservationform':reservationform})
 
@@ -141,7 +141,7 @@ def loadupdate_reservation(request):
     updateform.fields['package'].empty_label=None
     updateform.fields['reserver'].empty_label=None
     updateform.fields['reserver'].queryset = UserProfileInfo.objects.filter(user__id=request.session['user_id'])
-    packages=CateringPackages.objects.all()
+    packages=CateringPackage.objects.all()
     return render(request,"home/update_reservation.html",{'user':userinfo,'userprofilepic':userprofileinfo,'packages':packages,'updateform':updateform,'reservers':reservers})
 
 @login_required
@@ -151,7 +151,7 @@ def retrieveEvent(request):
     for e in events:
         if str(e)==event:
             print("Caught")
-            p = CateringPackages.objects.get(name=str(e.package))
+            p = CateringPackage.objects.get(name=str(e.package))
             package = p.id
             eventtype = str(e.event_type)
             eventdate = e.event_date
