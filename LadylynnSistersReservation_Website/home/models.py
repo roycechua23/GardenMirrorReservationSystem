@@ -47,7 +47,8 @@ class Reservation(models.Model):
         self.save()
 
     def completed_eventslist(self):
-        pass
+        eventname = "{} {} ({})".format(str(self.reserver.user.first_name),self.event_type,self.reserver)
+        return eventname
 
     def __str__(self):
         eventname = "{} {} ({})".format(str(self.reserver.user.first_name),self.event_type,self.reserver)

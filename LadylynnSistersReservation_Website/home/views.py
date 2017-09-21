@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from home.forms import UserForm,UserProfileInfoForm,ReservationForm
+from home.forms import UserForm,UserProfileInfoForm,ReservationForm, UpdateForm
 from home.models import User,UserProfileInfo
 
 from django.core.urlresolvers import reverse
@@ -137,12 +137,12 @@ def loadupdate_reservation(request):
     reservers = Reservation.objects.filter(reserver_id__user_id=request.session['user_id']).order_by('event_date')
     userinfo = User.objects.get(id=request.session['user_id'])
     userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
-    reservationform = ReservationForm()
-    reservationform.fields['package'].empty_label=None
-    reservationform.fields['reserver'].empty_label=None
-    reservationform.fields['reserver'].queryset = UserProfileInfo.objects.filter(user__id=request.session['user_id'])
+    updateform = UpdateForm()
+    updateform.fields['package'].empty_label=None
+    updateform.fields['reserver'].empty_label=None
+    updateform.fields['reserver'].queryset = UserProfileInfo.objects.filter(user__id=request.session['user_id'])
     packages=CateringPackages.objects.all()
-    return render(request,"home/update_reservation.html",{'user':userinfo,'userprofilepic':userprofileinfo,'packages':packages,'reservationform':reservationform,'reservers':reservers})
+    return render(request,"home/update_reservation.html",{'user':userinfo,'userprofilepic':userprofileinfo,'packages':packages,'updateform':updateform,'reservers':reservers})
 
 @login_required
 def retrieveEvent(request):
@@ -163,9 +163,9 @@ def retrieveEvent(request):
     data = {
         'package':package,
         'eventtype':eventtype,
-        'eventdate':e.event_date,
-        'eventtimestart': e.event_timestart,
-        'eventtimeend': e.event_timeend,
+        'eventdate':eventdate,
+        'eventtimestart': eventtimestart,
+        'eventtimeend': eventtimeend,
     }
     return JsonResponse(data)
 
@@ -199,13 +199,12 @@ def reserve(request):
 
 @login_required
 def update(request):
-
-    
+    e = Reservation.objects.get(id=11)
     if request.method == 'POST':
-        reservation = ReservationForm(data=request.POST, instance=0)
+        reservation = UpdateForm(data=request.POST)
         print(reservation.is_valid())
         if reservation.is_valid():
-            reservation.save()
+            # reservation.save()
             print("Updated")
             return HttpResponseRedirect(reverse('home:user_home'))
     else:

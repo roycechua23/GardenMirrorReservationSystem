@@ -24,6 +24,9 @@ $(document).ready(function() {
                     // type: 'POST',
                     dataType:'json',
                     success: function(data) {
+                       
+                        console.log(data.eventtimestart)
+                        console.log(data.eventtimeend)
                         $("#id_package").val(data.package);
                         $("#id_event_type").val(data.eventtype);
                         $("#event_date").val(data.eventdate);
