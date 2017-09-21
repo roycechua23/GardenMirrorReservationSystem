@@ -22,7 +22,7 @@ class CateringPackages(models.Model):
     pax = models.PositiveIntegerField(default=50,null=False)
     description = models.CharField(max_length=256,blank=False)
     price = models.PositiveIntegerField()
-
+    
     def __str__(self):
         return self.name
 
