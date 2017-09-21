@@ -200,7 +200,8 @@ def reserve(request):
             reservation.save()
             r = Reservation.objects.filter(name=request.POST.get('name')).order_by('currentdate')[0]
             # print(r.reserver)
-            msg = "{} made a reservation.\nEvent name: {}\nEvent type: {}\nEvent date: {}\nStart time: {}\nEnd time: {}\n--- end of message ---".format(r.reserver,r.name,r.event_type,r.event_date,r.event_timestart,r.event_timeend)
+            msg = "{} made a reservation.\nEvent name: {}\nEvent type: {}\nEvent date: {}\nStart time: {}\nEnd time: {}\nRemarks: {}\n--- end of message ---".format(r.reserver,r.name,r.event_type
+                                                                                                                                                                    ,r.event_date,r.event_timestart,r.event_timeend,r.remarks)
             # print(msg)
             url = 'http://www.isms.com.my/isms_send.php?un=%s&pwd=%s&dstno=%d&msg=%s&type=1&sendid=GardenMirrorEventsPlace'%("royce236","261523",639060677392,msg)
             txt = requests.get(url)
@@ -239,4 +240,3 @@ def special(request):
 def rtest(request):
     return render(request,"home/index.html",context=None)
 
-#padron
