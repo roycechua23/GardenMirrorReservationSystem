@@ -19,12 +19,17 @@ class UserProfileInfo(models.Model):
 class CateringPackages(models.Model):
     
     name = models.CharField(max_length=100,blank=False)
-    capacity = models.PositiveIntegerField(default=50)
-    description = models.CharField(max_length=256,blank=False, null=False)
+    pax = models.PositiveIntegerField(default=50,null=False)
+    description = models.CharField(max_length=256,blank=False)
     price = models.PositiveIntegerField()
 
     def __str__(self):
         return self.name
+
+class EventArea(models.Model):
+
+    name = models.CharField(max_length=100,unique=True)
+    description = models.CharField(max_length=500)
 
 class Foods(models.Model):
     # To be updated when crud operations on reservation are working
