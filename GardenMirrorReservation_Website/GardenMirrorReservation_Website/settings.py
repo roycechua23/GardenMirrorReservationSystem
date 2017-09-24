@@ -16,7 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
 STATIC_DIR = os.path.join(BASE_DIR, "static")
-MEDIA_DIR = os.path.join(BASE_DIR,'media')
+MEDIA_DIR = os.path.join(BASE_DIR, "media")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -95,7 +95,8 @@ DATABASES = {
         'NAME': 'royce236$GardenMirrorReservation_db',
         'USER': 'royce236',
         'PASSWORD': 'Rbc261523',
-        'HOST': 'royce236.mysql.pythonanywhere-services.com',   # Or an IP Address that your DB is hosted on
+        'HOST': 'royce236.mysql.pythonanywhere-services.com',
+        # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }
