@@ -143,6 +143,7 @@ USE_L10N = True
 USE_TZ = True
 
 # DATE_INPUT_FORMATS = ['%m/%d/%Y',]
+# DATE_INPUT_FORMATS = ['%B %d, %Y',]
 TIME_INPUT_FORMATS = ['%I:%M %p',]
 
 # Static files (CSS, JavaScript, Images)
