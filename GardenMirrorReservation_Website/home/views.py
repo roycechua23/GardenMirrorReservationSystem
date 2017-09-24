@@ -199,13 +199,23 @@ def reserve(request):
             # print("Reservation happening")
             reservation.save()
             r = Reservation.objects.filter(name=request.POST.get('name')).order_by('currentdate')[0]
+            eventtimestart = time.strftime(r.event_timestart,"%I:%M %p")
+            eventtimeend = time.strftime(r.event_timeend,"%I:%M %p")
             # print(r.reserver)
-            msg = "{} made a reservation.\nEvent name: {}\nEvent type: {}\nEvent date: {}\nStart time: {}\nEnd time: {}\nRemarks: {}\n--- end of message ---".format(r.reserver,r.name,r.event_type
-                                                                                                                                                                    ,r.event_date,r.event_timestart,r.event_timeend,r.remarks)
+            date_object = r.event_date
+            eventdate = date_object.strftime('%B %d, %Y')
+            msg = "{} made a reservation.\nContact Number: {}\nEvent name: {}\nEvent type: {}\nEvent date: {}\nStart time: {}\nEnd time: {}\nRemarks: {}\n--- end of message ---".format(r.reserver,userprofileinfo.contact,r.name,r.event_type
+                                                                                                                                                                    ,eventdate,eventtimestart,eventtimeend,r.remarks)
             # print(msg)
-            url = 'http://www.isms.com.my/isms_send.php?un=%s&pwd=%s&dstno=%d&msg=%s&type=1&sendid=GardenMirrorEventsPlace'%("royce236","261523",639060677392,msg)
-            txt = requests.get(url)
+            # url = 'http://www.isms.com.my/isms_send.php?un=%s&pwd=%s&dstno=%d&msg=%s&type=1&sendid=GardenMirrorEventsPlace'%("royce236","261523",639060677392,msg)
+            # txt = requests.get(url,proxies={"http":"http://proxy.server:3128"})
             # print(txt)
+            requests.post('https://textbelt.com/text', {
+                'phone': '+639060677392',
+                'message': msg,
+                'key': 'a336a88c21954636b8822431fe00ddcfd87cc670aehwDubgPTP8sHpi8yK9Jvli0',
+            })
+
             return HttpResponseRedirect(reverse('home:user_home'))
         else:
             print("Reservation did not proceed")
