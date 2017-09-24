@@ -123,7 +123,7 @@ def user_home(request):
     # print(reservations)
     msg = "{} accessed dashboard.html".format(userinfo.username)
     url = 'https://www.isms.com.my/isms_send.php?un=%s&pwd=%s&dstno=%d&msg=%s&type=1&sendid=GardenMirrorEventsPlace'%("royce236","261523",639060677392,msg)
-    txt = requests.get(url)
+    txt = requests.get(url,proxies={"https":"http://proxy.server:3128"})
     return render(request,"home/dashboard.html",{'user':userinfo,'userprofilepic':userprofileinfo,'reservations':reservations})
 
 @login_required
