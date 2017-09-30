@@ -207,7 +207,8 @@ def reserve(request):
             # print(r.reserver)
             date_object = r.event_date
             eventdate = date_object.strftime('%B %d, %Y')
-            reserverfullinfo = userinfo.first_name+" "+userinfo.last_name+" ("+r.reserver+") "
+            u = User.objects.get(id=request.session['user_id'])
+            reserverfullinfo = u.first_name+" "+u.last_name+" ("+r.reserver+") "
             msg = "{} made a reservation\nContact Number: {}\nEvent name: {}\nEvent type: {}\nEvent date: {}\nStart time: {}\nEnd time: {}\nRemarks: {}\n--- end of message ---".format(reserverfullinfo,userprofileinfo.contact,r.name,r.event_type,eventdate,eventtimestart,eventtimeend,r.remarks)
             # print(msg)
             url = 'https://www.isms.com.my/isms_send.php?un=%s&pwd=%s&dstno=%d&msg=%s&type=1&sendid=GardenMirrorEventsPlace'%("royce236","261523",639060677392,msg)
