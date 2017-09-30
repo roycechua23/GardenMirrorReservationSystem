@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load bootstrap4 %}
+<html lang="en">
+    <head>
+        <title>THE GARDEN MIRROR EVENTS PLACE</title>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="{% static 'bootstrap3/css/bootstrap.min.css' %}">
+            <link rel="stylesheet" href="{% static 'bootstrap3/css/bootstrap-theme.min.css' %}">
+            <link rel="stylesheet" href="{% static 'home/css/userhome/main.css' %}" />
+
+    </head>
+        
+        <body>
+        <!-- Wrapper -->
+                    <div id="wrapper">
+                        <!-- Main -->
+                            <div id="main">
+                                <div class="inner">
+                                    <!-- Header -->
+                                        <header id="header">
+                                          <h1>EVENTS</h1>
+
+                                          <ul class="icons">
+                                                <li><a href="#Wedding" class="glyphicon glyphicon-heart"><span class="label"></span></a></li>
+                                                <li><a href="#Debut" class="glyphicon glyphicon-gift"><span class="label"></span></a></li>
+                                                <li><a href="#kiddie" class="glyphicon glyphicon-leaf"><span class="label"></span></a></li>
+                                                <li><a href="#party" class="glyphicon glyphicon-glass"><span class="label"></span></a></li>
+                                                
+                                            </ul>
+                                        </header>
+        
+                                    <!-- insert code here -->
+                                        <section> 
+                                            <button id="sidetoggle" class="btn btn-success">Toggle me!</button>
+                                        </section>
+                                </div>
+                            </div>
+        
+                        <!-- Sidebar para po madisappear :) -->
+                            <div id="sidebar">
+                                <div class="inner">
+        
+                                    <!-- Search Bar code here-->
+                                        <section id="search" class="alt">
+                                             <ul class="nav navbar-nav navbar-left">
+                                             <li>
+                                             <button type="button" class="btn btn-default btn-lg">
+                                             <center>
+                                             <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile </button>
+                                             </center>
+                                             </li>
+                                             </li>
+                                             </ul>
+                                             <br>
+                                        </section>
+        
+                                    <!-- Menu and submenu code here-->
+                                        <nav id="menu">
+                                            <header class="major">
+                                                <h2>Menu</h2>
+                                            </header>
+                                            <ul>
+                                                <li><a href="example.html">HOME</a></li>
+                                                <li><a href="example3.html">EVENTS</a></li>
+                                                <li>
+                                                    <span class="opener">PACKAGES</span>
+                                                    <ul>
+                                                        <li><a href="P_Wedding.html">WEDDING PACKAGES</a></li>
+                                                        <li><a href="P_Debut.html">DEBUT PACKAGES</a></li>
+                                                        <li><a href="P_KiddieParty.html">KIDDIE PARTY PACKAGES</a></li>
+                                                        <li><a href="P_Party.html">PARTY PACKAGES</a></li>
+                                                    </ul>
+                                                </li>
+                                               
+                                            </ul>
+                                        </nav>
+        
+                                    <!-- Section -->
+                                        <section>
+                                            <header class="major">
+                                                <h2>THE GARDEN MIRROR EVENTS PLACE</h2>
+                                            </header>
+                                            <div class="mini-posts">
+                                                <article>
+                                                    <a href="#" class="image"><img src="images/G1.jpg" alt="" /></a>
+                                                    <p>We can deliver your celebration memorable!</p>
+                                                </article>
+                                                <article>
+                                                    <a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
+                                                    <p>Insert some text here</p>
+                                                </article>                                    
+                                            </div>
+                                        </section>
+        
+                                    <!-- Section -->
+                                        <section>
+                                            <header class="major">
+                                                <h2>Get in touch</h2>
+                                            </header>
+                                            <p>You can contact us on the following:</p>
+                                            <ul class="contact">
+                                                <li class="fa-envelope-o"><a href="#">gardenmirroreventsplace@gmail.com</a></li>
+                                                <li class="fa-phone">(CP) 0917-874-2226 or (TEL) 239-45-69</li>
+                                                <li class="fa-home">76 Gil Fernando Avenue San Roque, Marikina City
+                                                </li>
+                                            </ul>
+                                        </section>
+                                    <!-- Footer -->
+                                        <footer id="footer">
+                                            <p class="copyright">&copy; THE GARDEN MIRROR EVENTS PLACE. All rights reserved.
+                                        </footer>
+                                </div>
+                            </div>
+                    </div>
+        
+                <!-- Scripts -->
+                    <script src="{% static 'jquery/jquery-3.2.1.min.js' %}"></script>
+                    
+                    <script src="{% static 'home/js/userhome/skel.min.js' %}"></script>
+                    <script src="{% static 'home/js/userhome/util.js' %}"></script>
+                    
+                    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+                    {% comment %} <script type="text/javascript" src="{% static 'home/js/userhome/modal.js' %}"></script> {% endcomment %}
+                    <script src="{% static 'home/js/userhome/main.js' %}"></script>
+                    <script src="{% static 'bootstrap3/js/bootstrap.min.js' %}"></script>
+                    
+        </body>
+</html>

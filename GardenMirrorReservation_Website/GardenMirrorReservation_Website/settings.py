@@ -27,7 +27,7 @@ SECRET_KEY = '3)n872^stx#9#t4ag4z58psrnx7zch1#5q+&y*_n2otz1qqs^c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['royce236.pythonanywhere.com',]
+ALLOWED_HOSTS = ['127.0.0.1','royce236.pythonanywhere.com',]
 
 LOGIN_REDIRECT_URL = 'home/user_home' # if logged in, it will redirect to this URL
 LOGIN_URL = '/' # if not logged in, it will redirect to this URL
@@ -81,26 +81,25 @@ WSGI_APPLICATION = 'GardenMirrorReservation_Website.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'GardenMirrorReservation_db',
-    #     'USER': 'root',
-    #     'PASSWORD': '',
-    #     'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-    #     'PORT': '3306',
-    # }
-    # For deployment
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'royce236$GardenMirrorReservation_db',
-        'USER': 'royce236',
-        'PASSWORD': 'Rbc261523',
-        'HOST': 'royce236.mysql.pythonanywhere-services.com',
-        # Or an IP Address that your DB is hosted on
+        'NAME': 'GardenMirrorReservation_db',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
+    # For deployment
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'royce236$GardenMirrorReservation_db',
+    #     'USER': 'royce236',
+    #     'PASSWORD': 'Rbc261523',
+    #     'HOST': 'royce236.mysql.pythonanywhere-services.com',
+    #     # Or an IP Address that your DB is hosted on
+    #     'PORT': '3306',
+    # }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators

@@ -17,7 +17,7 @@ def index(request):
     user_form = UserForm()
     profile_form = UserProfileInfoForm()
 
-    return render(request,"home/body.html",
+    return render(request,"home/index.html",
                           context={'user_form':user_form,
                                    'profile_form':profile_form})
 
@@ -121,9 +121,9 @@ def user_home(request):
     userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
     reservations = Reservation.objects.filter(reserver_id__user_id=request.session['user_id']).order_by('event_date')
     # print(reservations)
-    msg = "{} accessed dashboard.html".format(userinfo.username)
-    url = 'https://www.isms.com.my/isms_send.php?un=%s&pwd=%s&dstno=%d&msg=%s&type=1&sendid=GardenMirrorEventsPlace'%("royce236","261523",639060677392,msg)
-    txt = requests.get(url,proxies={"https":"http://proxy.server:3128"})
+    # msg = "{} accessed dashboard.html".format(userinfo.username)
+    # url = 'https://www.isms.com.my/isms_send.php?un=%s&pwd=%s&dstno=%d&msg=%s&type=1&sendid=GardenMirrorEventsPlace'%("royce236","261523",639060677392,msg)
+    # txt = requests.get(url,proxies={"https":"http://proxy.server:3128"})
     return render(request,"home/dashboard.html",{'user':userinfo,'userprofilepic':userprofileinfo,'reservations':reservations})
 
 @login_required
@@ -207,17 +207,17 @@ def reserve(request):
             # print(r.reserver)
             date_object = r.event_date
             eventdate = date_object.strftime('%B %d, %Y')
-            msg = "{} made a reservation.\nContact Number: {}\nEvent name: {}\nEvent type: {}\nEvent date: {}\nStart time: {}\nEnd time: {}\nRemarks: {}\n--- end of message ---".format(r.reserver,userprofileinfo.contact,r.name,r.event_type
-                                                                                                                                                                    ,eventdate,eventtimestart,eventtimeend,r.remarks)
+            reserverfullinfo = userinfo.first_name+" "+userinfo.last_name+" ("+r.reserver+") "
+            msg = "{} made a reservation\nContact Number: {}\nEvent name: {}\nEvent type: {}\nEvent date: {}\nStart time: {}\nEnd time: {}\nRemarks: {}\n--- end of message ---".format(reserverfullinfo,userprofileinfo.contact,r.name,r.event_type,eventdate,eventtimestart,eventtimeend,r.remarks)
             # print(msg)
-            # url = 'http://www.isms.com.my/isms_send.php?un=%s&pwd=%s&dstno=%d&msg=%s&type=1&sendid=GardenMirrorEventsPlace'%("royce236","261523",639060677392,msg)
-            # txt = requests.get(url,proxies={"http":"http://proxy.server:3128"})
+            url = 'https://www.isms.com.my/isms_send.php?un=%s&pwd=%s&dstno=%d&msg=%s&type=1&sendid=GardenMirrorEventsPlace'%("royce236","261523",639060677392,msg)
+            txt = requests.get(url,proxies={"https":"http://proxy.server:3128"})
             # print(txt)
-            requests.post('https://textbelt.com/text', {
-                'phone': '+639060677392',
-                'message': msg,
-                'key': 'a336a88c21954636b8822431fe00ddcfd87cc670aehwDubgPTP8sHpi8yK9Jvli0',
-            })
+            # requests.post('https://textbelt.com/text', {
+            #     'phone': '+639060677392',
+            #     'message': msg,
+            #     'key': 'a336a88c21954636b8822431fe00ddcfd87cc670aehwDubgPTP8sHpi8yK9Jvli0',
+            # })
 
             return HttpResponseRedirect(reverse('home:user_home'))
         else:

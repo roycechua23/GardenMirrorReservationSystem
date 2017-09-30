@@ -1,579 +1,733 @@
-<!DOCTYPE html>
-{% load staticfiles %} <!-- This junja2 template tag allows images, css, and js to be injected
-through Django, we won't hardcode the path this time -->
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
 <html>
-<title>Garden Mirror Events Place By Ladylynn and Sisters</title>
-<meta charset="UTF-8">
+{% load staticfiles %}
+{% load bootstrap4 %}
+<head>
+<title>Garden Mirror Events Place</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<style>
-/* for SLIDESHOW */
-.mySlides {display:none}
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1400px;
-  position: relative;
-  margin: auto;
-}
-
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  height: 13px;
-  width: 13px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-.active {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 10 s;
-  animation-name: fade;
-  animation-duration: 10 s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .text {font-size: 11px}
-}
-
-/* modal */
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
-
-/* the "X" Button */
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-/*cancel button color */
-.sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-
-#login{
-  position: absolute;
-  top:30%;
-  left:50%;
-  transform:translate(-50%,-50%);
-}
-#login h2{
-  text-align: center;
-  color: white;
-  font-family: times new roman;
-  font-size: 20px;
-}
-
-/*username and password */
-#login input{
-  display: block;
-  width:180px;
-  height: 30px;
-  padding: 10px;
-  font-size: 15px;
-  font-family: lucida;
-  color: white;
-  background: rgba(0,0,0,0.3);
-  outline: none;
-  border:1px solid rgba(0,0,0,0.3);
-  border-radius: 5px;
-  border-shadow: inset 5px -5px 45px rgba(100,100,100,0.2), 0px 1px 1px rgba(255,255,255,0.2);
-  margin-bottom: 10px;
-
-}
-
-/*log in button*/
-#login #login-btn{
-
-  width:150px;
-  height: 25px;
-  background:red;
-  text-align: center;
-  font-size: 15px;
-  vertical-align: middle;
-  line-height: 3px;
-  cursor: pointer;
-  border-radius: 10px;
-}
-
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-/* For Sign Up */
-.cancelbtn {
-    padding: 14px 20px;
-    background-color: #f44336;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn,.signupbtn {float:left;width:50%}
-
-/*For SignUp button inside*/
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
-
-/* Clear floats */
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-/* HELLO WINDEEEEEEEEEE*/
-.colorgraph {
-  height: 5px;
-  border-top: 0;
-  background: #c4e17f;
-  border-radius: 5px;
-  background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-  background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-  background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-  background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-}
-
-/*Parallax */
-#we1{
-  background-color: white;
-  font-size: 20px;
-  font-family: lucida;
-}
-
-#box1{
-  height: 100vh;
-  width: 100%;
-  background-image: url("{% static 'home/images/F11.jpg' %}");
-  background-size: cover; 
-  background-repeat: no-repeat;
-  display: table;
-  background-attachment: fixed;
-  
-}
-
-#box2{
-  height: 100vh;
-  width: 100%;
-  background-image: url("{% static 'home/images/F12.jpg' %}");
-  background-size: cover; 
-  background-repeat: no-repeat;
-  display: table;
-  background-attachment: fixed;
-}
-
-#box3{
-  height: 100vh;
-  width: 100%;
-  background-image: url("{% static 'home/images/F13.jpg' %}");
-  background-size: cover; 
-  background-repeat: no-repeat;
-  display: table;
-  background-attachment: fixed;  
-}
-
-h1 {
-  font-family: arial black;
-  font-size: 50px;
-  color: white;
-  margin: 0px;
-  text-align: center;
-  display: table-cell;
-  vertical-align: middle;
-}
-
-/*Thumbnail*/
-#myImg {
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#myImg:hover {opacity: 0.7;}
-
-/* The Modal (background) */
-.modal1, .modal2 , .modal3 {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-}
-
-/* Modal Content (image) */
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-}
-
-/* Caption of Modal Image */
-#caption {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    text-align: center;
-    color: #ccc;
-    padding: 10px 0;
-    height: 150px;
-}
-
-/* Add Animation */
-.modal-content, #caption {    
-    -webkit-animation-name: zoom;
-    -webkit-animation-duration: 0.6s;
-    animation-name: zoom;
-    animation-duration: 0.6s;
-}
-
-@-webkit-keyframes zoom {
-    from {-webkit-transform: scale(0)} 
-    to {-webkit-transform: scale(1)}
-}
-
-@keyframes zoom {
-    from {transform: scale(0.1)} 
-    to {transform: scale(1)}
-}
-
-/* The Close Button */
-.close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
-    .modal-content {
-        width: 100%;
-    }
-}
-
-</style>
-
-<div class = "w3-top">
-<div class = "w3-bar w3-black w3-card-2">
-<a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-<a href="#garden" class="w3-bar-item w3-button w3-padding-large">THE GARDEN MIRROR</a>
- <a href="#about us" class="w3-bar-item w3-button w3-padding-large w3-hide-small">ABOUT US </a>
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
-
-<a><span class="w3-padding-large w3-hover-white w3-hide-small w3-right" style=" font-size:15px; cursor:pointer;  right: 0;" onclick="openNav()";> &#9776;  Login</span></a>
-<a><span class="w3-padding-large w3-hover-white w3-hide-small w3-right" style=" font-size:15px; cursor:pointer;  right: 0;" onclick="document.getElementById('id01').style.display='block'";> &#9776;  SignUp</span></a>
-
-
- <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <div id="login">
-    <form>
-     <h2>Sign in</h2>
-     <input type="text" id="username" placeholder="Enter Username" />
-     <input type="password" id="password" placeholder="Enter Password" />
-
-     <p class="w3-center"><input type="button" id="login-btn" value="Log in" onclick="check(this.form)" ></p>
-
-   </form>
-      </div>
-  </div>
-
-<!-- Sign up-->
-  <div id="id01" class="w3-modal">
-    <div class="w3-modal-content w3-animate-top w3-card-10"> 
-        <span onclick="document.getElementById('id01').style.display='none'" 
-        class="w3-button w3-display-topright w3-gray">&times;</span>
-    
-      <div class="w3-container" style="color: black;">
-       <form action="/action_page.php"><br>
-     <h2 style="color: black;">Sign Up <small style="color: gray;"> It's free</small></h2>
-    <hr class="colorgraph">
-    <div class="form-group">
-    <label for="usr">Username:</label>
-    <input type="text" class="form-control" id="usr" required>
-    </div>
-    <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" required>
-    </div>
-  <div class="form-group">
-    <label for="pwd">Confirm Password:</label>
-    <input type="password" class="form-control" id="pwd" required>
-    </div>
-  </form>
-  
- <div class="row">
-        <div class="col-xs-4 col-sm-3 col-md-3">
-          <span class="button-checkbox">
-            <input type="checkbox" checked="checked"> I Agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site.
-        </div>
-      </div>
-  
-  <hr class="colorgraph">
-   <div class="clearfix">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signupbtn"> Sign Up </button>
-      </div>
-    
-      </div>  
-    </div>
-  </div>
-  </div>
-  </div>
-
-<!-- Navbar po -->
-  <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
-   <a href="#garden" class="w3-bar-item w3-button w3-padding-large">THE GARDEN MIRROR </a>
-  <a href="#about us" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-  <a href="#contact" class="w3-bar-item w3-button w3-padding-large">CONTACT</a>
-</div>
-
-<!-- Page content -->
-<div class="w3-content" style="max-width:2000px;margin-top:46px">
-
-  <!-- Automatic Slideshow -->
-  <div class="mySlides w3-display-container w3-center" id="garden" >
-    <img src="{% static "home/images/P2.jpg" %}" style="width:100%">
-    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-      <h3>The Garden Mirror Place</h3>
-    </div>
-  </div>
-
-  <div class="mySlides w3-display-container w3-center">
-    <img src="{% static "home/images/P1.jpg" %}" style="width:100%">
-    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-      <h3>Birthdays</h3>
-
-    </div>
-  </div>
-  <div class="mySlides w3-display-container w3-center">
-    <img src="{% static "home/images/P3.jpg" %}" style="width:100%">
-    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-      <h3>Weddings</h3>
-    </div>
-  </div>
-
-<!-- PH Finder -->
-  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="about us">
-    <h2 class="w3-wide">Welcome to The Garden Mirror Events Place  </h2>
-    <p class="w3-opacity"><i> By Ladylynn and Sisters </i></p>
-    <p class="w3-justify">  We are servicing you out with our birthday, weddings and other events celebration. Come login or create your account to view our accomodation process. We are very happy to serve you!</p>
-   
-<!-- Container -->
-<div class="w3-content w3-container w3-padding-64" id="portfolio">
-
-  <!-- Modal Set Up. 3 column -->
-  <div class="w3-row-padding w3-center">
-    <div class="w3-col m4">
-      <img src="{% static "home/images/F11.jpg" %}" style="width:100%; border-radius: 8px; cursor:pointer" onclick="onClick(this)" class="w3-hover-opacity" alt="Wedding celebration">
-    </div>
-
-    <div class="w3-col m4">
-      <img src="{% static "home/images/F12.jpg" %}" style="width:100%; border-radius: 8px; cursor:pointer" onclick="onClick(this)" class="w3-hover-opacity" alt="Birthday Celebration">
-    </div>
-
-    <div class="w3-col m4">
-      <img src="{% static "home/images/F13.jpg" %}" style="width:100%; border-radius: 8px; cursor:pointer" onclick="onClick(this)" class="w3-hover-opacity" alt="Catering services">
-    </div>
-  </div>
-
-<!-- Modal for full size images on click-->
-<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
-  <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
-  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-    <img id="img01" class="w3-image">
-    <p id="caption" class="w3-opacity w3-large"></p>
-  </div>
-</div>
-</div>
-</div>
-
-<!-- Parallax po -->
-<div id="box1">
-  <h1> Wedding </h1>
-</div>
-  <div id="we1">
-    <center>
-    <br> INSERT SOME TEXT HERE WENDIE! <br><br>
-    </center>
-    </div>
-  <div id="box2">
-  <h1> Birthday </h1>
-</div>
-  <div id="we1">
-    <center>
-    <br> INSERT SOME TEXT HERE WENDIE! <br><br>
-    </center>
-    </div>
-      <div id="box3">
-  <h1> Catering Services </h1>
-</div>
-
-<script>
-// Automatic Slideshow - change image every 3 seconds
-// Change the value for (carousel, ____) for seconds it will take.
-var myIndex = 0;
-carousel();
-
-function carousel() {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";  
-    }
-    myIndex++;
-    if (myIndex > x.length) {myIndex = 1}    
-    x[myIndex-1].style.display = "block";  
-  setTimeout(carousel, 3000);
-}
-
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Honest Food Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+<script type="applisalonion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="{% static 'home/templates/homepage/css/bootstrap.css' %}" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<link href="{% static 'home/templates/homepage/css/iconeffects.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static 'home/templates/homepage/css/style.css' %}" rel='stylesheet' type='text/css' />	
+<link rel="stylesheet" href="{% static 'home/templates/homepage/css/swipebox.css' %}">
+<script src="{% static 'home/templates/homepage/js/jquery-1.11.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'home/templates/homepage/js/move-top.js' %}"></script>
+<script type="text/javascript" src="{% static 'home/templates/homepage/js/easing.js' %}"></script>
+<!--/web-font-->
+	<link href="https://fonts.googleapis.com/css?family=Italianno" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Merriweather+Sans" rel="stylesheet">
+	<!-- <link href='//fonts.googleapis.com/css?family=Italianno' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Merriweather+Sans:400,300,700' rel='stylesheet' type='text/css'> -->
+<!--/script-->
+<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
+				});
+			});
 </script>
-<script language="javascript">
-function check(form) {
-  if(form.username.value == "dew" && form.password.value == "123")
-  {
-    window.open('index2.html')
-  }
-  else
-  {
-    alert("INCORRECT")
-  }
-}
-// Get the modal. This is for SIGN UP 
-var modal = document.getElementById('id01');
+<!-- swipe box js -->
+	<script src="{% static 'home/templates/homepage/js/jquery.swipebox.min.js' %}"></script> 
+	    <script type="text/javascript">
+			jQuery(function($) {
+				$(".swipebox").swipebox();
+			});
+	</script>
+<!-- //swipe box js -->
+<!--animate-->
+<link href="{% static 'home/templates/homepage/css/animate.css' %}" rel="stylesheet" type="text/css" media="all">
+<script src="{% static 'home/templates/homepage/js/wow.min.js' %}"></script>
+	<script>
+		 new WOW().init();
+	</script>
 
-// When the user clicks anywhere outside of the modal, it will close :)
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
+</head>
+<body>
+<!--start-home-->
+		<div class="banner" id="home">
+		<div class="header-bottom wow slideInDown"  data-wow-duration="1s" data-wow-delay=".3s">
+		     <div class="container">
+			  <div class="fixed-header">
+			      <!--logo-->
+			       <div class="logo">
+                      <a href="index.html"><h1>H<span>onest Food</span></h1></a>
+					  <p>The Real taste</p>
+				   </div>
+					<!--//logo-->
+					<div class="top-menu">
+							<span class="menu"> </span>
+							<nav class="link-effect-4" id="link-effect-4">
+                              <ul>
+								<li class="active"><a data-hover="Home" href="index.html">Home</a></li>
+								<li><a data-hover="About" href="#about" class="scroll">About</a></li>
+								<li><a data-hover="Services" href="#services" class="scroll">Services</a></li>
+								<li><a data-hover="Chefs" href="#team" class="scroll">Chefs</a></li>
+							    <li><a data-hover="Reservation" href="#reservation" class="scroll">REservation</a></li>
+							    <li><a data-hover="Gallery" href="#gallery" class="scroll">Gallery</a></li>
+								<li><a data-hover="Contact" href="#contact" class="scroll">Contact</a></li>
 
-var modal1 = document.getElementById('myModal');
-// Get the image and insert it inside the modal - uses "alt" text as a caption
-var img = document.getElementById('myImg');
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-    modal1.style.display = "block";
-    modalImg.src = this.src;
-    captionText.innerHTML = this.alt;
-}
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-// When the user clicks on (x), close the modal
-span.onclick = function() { 
-    modal1.style.display = "none";
-}
-// Modal Image Gallery
-function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-  var captionText = document.getElementById("caption");
-  captionText.innerHTML = element.alt;
-}
-</script>
+								</ul>
+							</nav>
+							</div>
+							<!-- script-for-menu -->
+								<script>
+									$("span.menu").click(function(){
+										$(".top-menu ul").slideToggle("slow" , function(){
+										});
+									});
+								</script>
+								<!-- script-for-menu -->
+
+				 <div class="clearfix"></div>
+					<script>
+				$(document).ready(function() {
+					 var navoffeset=$(".header-bottom").offset().top;
+					 $(window).scroll(function(){
+						var scrollpos=$(window).scrollTop(); 
+						if(scrollpos >=navoffeset){
+							$(".header-bottom").addClass("fixed");
+						}else{
+							$(".header-bottom").removeClass("fixed");
+						}
+					 });
+					 
+				});
+				</script>
+			 </div>
+		</div>
+	</div>
+		<div class="banner-slider">
+				<div class="callbacks_container">
+					<ul class="rslides" id="slider4">
+					    <li>
+						   <div class="banner-info">
+							      <h3 class="wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">Welcome</h3>
+								  <p class="wow slideInDown"  data-wow-duration="1s" data-wow-delay=".3s">TO THE HONEST FOOD</p>
+								     <div class="arrows wow slideInDown"  data-wow-duration="1s" data-wow-delay=".2s"><img src="{% static 'home/templates/homepage/images/border.png' %}" alt="border"/></div>
+								 <span class="wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">READY TO BE OPENED</span>
+							  </div>
+						</li>
+						<li>
+						   <div class="banner-info">
+							    <h3 class="wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">The Real</h3>
+								 <p class="wow slideInDown"  data-wow-duration="1s" data-wow-delay=".3s">SPICY MASALAS</p>
+								  <div class="arrows wow slideInDown"  data-wow-duration="1s" data-wow-delay=".2s"><img src="{% static 'home/templates/homepage/images/border.png' %}" alt="border"/></div>
+								 <span class="wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">READY TO BE OPENED</span>
+							  </div>
+						</li>
+						<li>
+						   <div class="banner-info">
+							      <h3 class="wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">Delicious</h3>
+								  <p class="wow slideInDown"  data-wow-duration="1s" data-wow-delay=".3s">FRESH FOODS</p>
+								   <div class="arrows wow slideInDown"  data-wow-duration="1s" data-wow-delay=".2s"><img src="{% static 'home/templates/homepage/images/border.png' %}" alt="border"/></div>
+								   <span class="wow slideInUpslideInLeft"  data-wow-duration="1s" data-wow-delay=".3s">READY TO BE OPENED</span>
+						   </div>
+					  </li>
+					</ul>
+			  </div>
+		<!--banner Slider starts Here-->
+	  	<script src="{% static 'home/templates/homepage/js/responsiveslides.min.js' %}"></script>
+			 <script>
+			    // You can also use "$(window).load(function() {"
+			    $(function () {
+			      // Slideshow 4
+			      $("#slider4").responsiveSlides({
+			        auto: true,
+			        pager:true,
+			        nav:false,
+			        speed: 500,
+			        namespace: "callbacks",
+			        before: function () {
+			          $('.events').append("<li>before event fired.</li>");
+			        },
+			        after: function () {
+			          $('.events').append("<li>after event fired.</li>");
+			        }
+			      });
+			
+			    });
+			  </script>
+	      <!--banner Slider starts Here-->
+		 </div>
+
+		 <div class="down"><a class="scroll" href="#services"><img src="{% static 'home/templates/homepage/images/down.png' %}" alt=""></a></div>
+	</div>
+
+<!--/products-->
+		  <div class="about" id="about">
+		     <div class="container">
+			 <!--/about-section-->
+			   <div class="about-section">
+				<div class="col-md-7 ab-left">
+				  <div class="grid">
+			        <div class="h-f wow slideInLeft"  data-wow-duration="1s" data-wow-delay=".2s">
+					<figure class="effect-jazz">
+					<img src="{% static 'home/templates/homepage/images/s1.jpg' %}" alt="img25"/>
+						<figcaption>
+							<h4>Honest <span>Food</span></h4>
+							<p>When Jazz starts to chase cars, the whole world stands still.</p>
+							
+						</figcaption>			
+					</figure>
+					
+				 </div>
+				 <div class="h-f wow slideInLeft"  data-wow-duration="1s" data-wow-delay=".2s">
+					<figure class="effect-jazz">
+						<img src="{% static 'home/templates/homepage/images/s2.jpg' %}" alt="img25"/>
+						<figcaption>
+							<h4>Honest <span>Food</span></h4>
+							<p>When Jazz starts to chase cars, the whole world stands still.</p>
+							
+						</figcaption>			
+					</figure>
+					
+				 </div>
+				 <div class="clearfix"> </div>
+				 </div>
+			   </div>
+			   <div class="col-md-5 ab-text">
+			             <h3 class="tittle wow slideInDown"  data-wow-duration="1s" data-wow-delay=".3s">Welcome</h3>
+						  <div class="arrows-two wow slideInDown"  data-wow-duration="1s" data-wow-delay=".5s"><img src="{% static 'home/templates/homepage/images/border.png' %}" alt="border"/></div>
+						  <p class="wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">Lorem ipsum Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere.Lorem Ipsum has been the industry's standard dummy text ever since.</p>
+						  <div class="start wow flipInX"  data-wow-duration="1s" data-wow-delay=".3s">
+						     <a href="single.html" class="hvr-bounce-to-bottom">Get Started</a>
+						  </div>
+
+					</div>
+					<div class="clearfix"> </div>
+			 </div>
+			  <!--//about-section-->
+			  <!--/about-section2-->
+			   <div class="about-section">
+			        <div class="col-md-5 ab-text two">
+			             <h3 class="tittle wow slideInDown"  data-wow-duration="1s" data-wow-delay=".3s">About</h3>
+						 <div class="arrows-two wow slideInDown"  data-wow-duration="1s" data-wow-delay=".5s"><img src="{% static 'home/templates/homepage/images/border.png' %}" alt="border"/></div>
+						  <p class="wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">Lorem ipsum Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere.Lorem Ipsum has been the industry's standard dummy text ever since.</p>
+						 <div class="start wow flipInX"  data-wow-duration="1s" data-wow-delay=".3s">
+						     <a href="single.html" class="hvr-bounce-to-bottom">Read more</a>
+						  </div>
+
+					</div>
+						<div class="col-md-7 ab-left">
+				  <div class="grid">
+			        <div class="h-f  wow slideInRight"  data-wow-duration="1s" data-wow-delay=".2s">
+					<figure class="effect-jazz">
+					<img src="{% static 'home/templates/homepage/images/s4.jpg' %}" alt="img25"/>
+						<figcaption>
+							<h4>Honest <span>Food</span></h4>
+							<p>When Jazz starts to chase cars, the whole world stands still.</p>
+							
+						</figcaption>			
+					</figure>
+					
+				 </div>
+				 <div class="h-f  wow slideInRight"  data-wow-duration="1s" data-wow-delay=".2s">
+					<figure class="effect-jazz">
+						<img src="{% static 'home/templates/homepage/images/s3.jpg' %}" alt="img25"/>
+						<figcaption>
+							<h4>Honest <span>Food</span></h4>
+							<p>When Jazz starts to chase cars, the whole world stands still.</p>
+						
+						</figcaption>			
+					</figure>
+					
+				 </div>
+				 <div class="clearfix"> </div>
+				 </div>
+			   </div>
+					<div class="clearfix"> </div>
+			 </div>
+			  <!--//about-section2-->
+			</div>
+	     </div>
+<!--//products-->
+<!-- service-type-grid -->
+	<div class="service" id="services">
+		<div class="container">
+		    <h3 class="tittle">Our Services</h3>
+			<div class="arrows-serve"><img src="{% static 'home/templates/homepage/images/border.png' %}" alt="border"></div>
+				<div class="inst-grids">
+					<div class="col-md-3 services-gd text-center wow slideInLeft"  data-wow-duration="1s" data-wow-delay=".3s">
+						<div class="hi-icon-wrap hi-icon-effect-9 hi-icon-effect-9a">
+							<a href="#" class="hi-icon"><img src="{% static 'home/templates/homepage/images/serve1.png' %}" alt=" " /></a>
+						</div>
+						<h4>View our Menu</h4>
+						 <p>Lorem ipsum Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit.</p>
+					</div>
+					<div class="col-md-3 services-gd text-center wow slideInDown"  data-wow-duration="1s" data-wow-delay=".2s">
+						<div class="hi-icon-wrap hi-icon-effect-9 hi-icon-effect-9a">
+							<a href="#" class="hi-icon"><img src="{% static 'home/templates/homepage/images/serve2.png' %}" alt=" " /></a>
+						</div>
+						<h4>Reservation</h4>
+						 <p>Lorem ipsum Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit.</p>
+					</div>
+					<div class="col-md-3 services-gd text-center wow slideInUp"  data-wow-duration="1s" data-wow-delay=".2s">
+						<div class="hi-icon-wrap hi-icon-effect-9 hi-icon-effect-9a">
+							<a href="#" class="hi-icon"><img src="{% static 'home/templates/homepage/images/serve3.png' %}" alt=" " /></a>
+						</div>
+						<h4>Fine Recipes</h4>
+						 <p>Lorem ipsum Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit.</p>
+					</div>
+					<div class="col-md-3 services-gd text-center wow slideInRight"  data-wow-duration="1s" data-wow-delay=".3s">
+						<div class="hi-icon-wrap hi-icon-effect-9 hi-icon-effect-9a">
+							<a href="#" class="hi-icon"><img src="{% static 'home/templates/homepage/images/serve4.png' %}" alt=" " /></a>
+						</div>
+						<h4>Spicy Recipes</h4>
+						 <p>Lorem ipsum Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit.</p>
+					</div>
+					<div class="clearfix"> </div>		
+				</div>
+
+		</div>
+	</div>
+<!-- //service-type-grid -->
+ <!--start-services-->
+	<div class="team-section" id="team">
+	 	  <div class="container">
+		  <h3 class="tittle">Our Chefs</h3>
+		  <div class="arrows-serve"><img src="{% static 'home/templates/homepage/images/border.png' %}" alt="border"></div>
+	 		<div class="box2">
+	 		   <div class="col-md-3 s-1 wow slideInLeft" data-wow-duration="1s" data-wow-delay=".3s">
+			   <a href="#">
+	 		   	<div class="view view-fifth">
+                    <img src="{% static 'home/templates/homepage/images/chef1.jpg' %}" alt="chef">
+                    <div class="mask">
+                        <h4>Vivamus moles tie gravida turpis</h4>
+                        <p>A wonderful serenity has taken possession of my entire soul,  I enjoy with my whole heart.</p>
+                         <p class="p2">A wonderful serenity has taken possession of my entire soul, I enjoy with my whole heart.</p>
+                     </div>
+                   
+				    </div>
+				  </a>
+			<h3>Wilson</h3>
+				</div>
+		<div class="col-md-3 s-2 wow slideInLeft" data-wow-duration="1s" data-wow-delay=".3s">
+		<a href="#">
+	 		   	<div class="view view-fifth">
+                      <img src="{% static 'home/templates/homepage/images/chef2.jpg' %}" alt="chef">
+                       <div class="mask">
+                        <h4>Vivamus moles tie gravida turpis</h4>
+                        <p>A wonderful serenity has taken possession of my entire soul,  I enjoy with my whole heart.</p>
+                         <p class="p2">A wonderful serenity has taken possession of my entire soul, I enjoy with my whole heart.</p>
+                     </div>
+               
+				    </div>
+				  </a>
+				<h3>Victoria</h3>
+				</div>
+			  <div class="col-md-3 s-3 wow slideInRight" data-wow-duration="1s" data-wow-delay=".3s">
+			  <a href="#">
+	 		   	<div class="view view-fifth">
+                     <img src="{% static 'home/templates/homepage/images/chef3.jpg' %}" alt="chef">
+                    <div class="mask">
+                        <h4>Vivamus moles tie gravida turpis</h4>
+                        <p>A wonderful serenity has taken possession of my entire soul,  I enjoy with my whole heart.</p>
+                         <p class="p2">A wonderful serenity has taken possession of my entire soul, I enjoy with my whole heart.</p>
+                     </div>
+                  
+				    </div>
+				  </a>
+					<h3>Mr.jazz</h3>
+				</div>
+				<div class="col-md-3 s-4 wow slideInRight" data-wow-duration="1s" data-wow-delay=".3s">
+				 <a href="#">
+	 		   	 <div class="view view-fifth">
+                      <img src="{% static 'home/templates/homepage/images/chef4.jpg' %}" alt="chef">
+                    <div class="mask">
+                        <h4>Vivamus moles tie gravida turpis</h4>
+                        <p>A wonderful serenity has taken possession of my entire soul,  I enjoy with my whole heart.</p>
+                         <p class="p2">A wonderful serenity has taken possession of my entire soul, I enjoy with my whole heart.</p>
+                     </div>
+                   
+				    </div>
+				  </a>
+					<h3>Rosie Wilson</h3>
+				</div>
+				<div class="clearfix"></div>
+		     </div>
+	 	    </div>
+	 	</div>
+	<!--end-team-->
+
+<!--start-banner-bottom-->
+   <!--/reviews-->
+	<div id="review" class="reviews">
+			   <div class="col-md-6 test-left-img">
+			   </div>
+				<div class="col-md-6 test-monials">
+					<h3 class="tittle">Testimonials</h3>
+					<div class="arrows-serve test"><img src="{% static 'home/templates/homepage/images/border.png' %}" alt="border"></div>
+				<!--//screen-gallery-->
+						<div class="sreen-gallery-cursual">
+							 <!-- required-js-files-->
+							<link href="{% static 'home/templates/homepage/css/owl.carousel.css' %}" rel="stylesheet">
+							    <script src="{% static 'home/templates/homepage/js/owl.carousel.js' %}"></script>
+							        <script>
+							    $(document).ready(function() {
+							      $("#owl-demo").owlCarousel({
+							        items : 1,
+							        lazyLoad : true,
+							        autoPlay : true,
+							        navigation : false,
+							        navigationText :  false,
+							        pagination : true,
+							      });
+							    });
+							    </script>
+								 <!--//required-js-files-->
+						       <div id="owl-demo" class="owl-carousel">
+					                 <div class="item-owl">
+					                		<div class="test-review">
+											   <p class="wow fadeInUp"  data-wow-duration=".8s" data-wow-delay=".4s"><img src="{% static 'home/templates/homepage/images/left-quotes.png' %}" alt=""> Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. <img src="{% static 'home/templates/homepage/images/right-quotes.png' %}" alt=""></p>
+						                	  <img src="{% static 'home/templates/homepage/images/t3.jpg' %}" class="img-responsive" alt=""/>
+											  <h5 class="wow bounceIn"  data-wow-duration=".8s" data-wow-delay=".2s">Martin H. Joseph</h5>
+					                	    </div>
+					                </div>
+					                 <div class="item-owl">
+					                	<div class="test-review">
+										 <p class="wow fadeInUp"  data-wow-duration=".8s" data-wow-delay=".4s"> <img src="{% static 'home/templates/homepage/images/left-quotes.png' %}" alt="">Polite sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.<img src="{% static 'home/templates/homepage/images/right-quotes.png' %}" alt=""></p>
+						                	<img src="{% static 'home/templates/homepage/images/t2.jpg' %}" class="img-responsive" alt=""/>
+											 <h5 class="wow bounceIn"  data-wow-duration=".8s" data-wow-delay=".2s">Dennis Pal,</h5>
+					                	</div>
+					                </div>
+					                 <div class="item-owl">
+					                	<div class="test-review">
+										     <p class="wow fadeInUp"  data-wow-duration=".8s" data-wow-delay=".4s"><img src="{% static 'home/templates/homepage/images/left-quotes.png' %}" alt=""> Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. <img src="{% static 'home/templates/homepage/images/right-quotes.png' %}" alt=""></p>
+						                	 <img src="{% static 'home/templates/homepage/images/t1.jpg' %}" class="img-responsive" alt=""/>
+											 <h5 class="wow bounceIn"  data-wow-duration=".8s" data-wow-delay=".2s">Martin H.Wilson</h5>
+					                	</div>
+					                </div>
+				              </div>
+						<!--//screen-gallery-->
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+		</div>
+<!--//reviews-->
+<!--reservation-->
+	<div class="reservation" id="reservation">
+		<div class="container">
+		<div class="reservation-info">
+		  <h3 class="tittle reserve">Make a <br>
+			Reservation</h3>
+			 <div class="arrows-reserve"><img src="{% static 'home/templates/homepage/images/border.png' %}" alt="border"></div>
+				<div class="book-reservation wow slideInUp" data-wow-duration="1s" data-wow-delay=".5s">
+					<!-- <form> -->
+					 <!-- <div class="col-md-4 form-left">
+						<label><i class="glyphicon glyphicon-calendar"></i> Date :</label>
+						<input type="date">
+						</div>
+						<div class="col-md-4 form-left">
+							<label><i class="glyphicon glyphicon-user"></i> No.of People :</label>
+							<select class="form-control">
+								<option>1 Person</option>
+								<option>2 People</option>
+								<option>3 People</option>
+								<option>4 People</option>
+								<option>5 People</option>
+								<option>More</option>
+							</select>
+						</div>
+						<div class="col-md-4 form-right">
+							<label><i class="glyphicon glyphicon-time"></i> Time :</label>
+							<input type="time">
+						</div> -->
+						<div class="clearfix"> </div>
+						<div class="make wow shake" data-wow-duration="1s" data-wow-delay=".5s">
+						  <input id="#" type="submit" value="Sign up for an account">
+						</div>
+					<!-- </form> -->
+
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>	
+	<!--//reservation-->
+
+<!--Gallery-->
+<div class="gallery" id="gallery">
+	<div class="container">
+		<h3 class="tittle">Gallery</h3>
+		<div class="arrows-serve"><img src="{% static 'home/templates/homepage/images/border.png' %}" alt="border"></div>
+				<div class="gallery-grids">
+					<div class="col-md-6 baner-top wow fadeInRight animated" data-wow-delay=".5s">
+						<a href="{% static 'home/templates/homepage/images/g1.jpg' %}" class="b-link-stripe b-animate-go  swipebox">
+							<div class="gal-spin-effect vertical ">
+								<img src="{% static 'home/templates/homepage/images/g1.jpg' %}" alt=" " />
+								<div class="gal-text-box">
+									<div class="info-gal-con">
+										<h4>Honest Food</h4>
+										<span class="separator"></span>
+										<p>Sit accusamus, vel blanditiis iure minima ipsa molestias minus laborum velit, nulla nisi hic quasi enim.</p>
+										<span class="separator"></span>
+										
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-6 baner-top wow fadeInLeft animated" data-wow-delay=".5s">
+						<a href="{% static 'home/templates/homepage/images/g2.jpg' %}" class="b-link-stripe b-animate-go  swipebox">
+							<div class="gal-spin-effect vertical ">
+								<img src="{% static 'home/templates/homepage/images/g2.jpg' %}" alt=" " />
+								<div class="gal-text-box">
+									<div class="info-gal-con">
+										<h4>Honest Food</h4>
+										<span class="separator"></span>
+										<p>Sit accusamus, vel blanditiis iure minima ipsa molestias minus laborum velit, nulla nisi hic quasi enim.</p>
+										<span class="separator"></span>
+										
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3 baner-top ban-mar wow fadeInUp animated" data-wow-delay=".5s">
+						<a href="{% static 'home/templates/homepage/images/c1.jpg' %}" class="b-link-stripe b-animate-go  swipebox">
+							<div class="gal-spin-effect vertical ">
+								<img src="{% static 'home/templates/homepage/images/c1.jpg' %}" alt=" " />
+								<div class="gal-text-box">
+									<div class="info-gal-con">
+										<h4>Honest Food</h4>
+										<span class="separator"></span>
+										<p>Sit accusamus, vel blanditiis iure minima ipsa.</p>
+										<span class="separator"></span>
+										
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3 baner-top ban-mar wow fadeInDown animated" data-wow-delay=".5s">
+						<a href="{% static 'home/templates/homepage/images/c2.jpg' %}" class="b-link-stripe b-animate-go  swipebox">
+							<div class="gal-spin-effect vertical ">
+								<img src="{% static 'home/templates/homepage/images/c2.jpg' %}" alt=" " />
+								<div class="gal-text-box">
+									<div class="info-gal-con">
+										<h4>Honest Food</h4>
+										<span class="separator"></span>
+										<p>Sit accusamus, vel blanditiis iure minima ipsa.</p>
+										<span class="separator"></span>
+										
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3 baner-top ban-mar wow fadeInUp animated" data-wow-delay=".5s">
+						<a href="{% static 'home/templates/homepage/images/c3.jpg' %}" class="b-link-stripe b-animate-go  swipebox">
+							<div class="gal-spin-effect vertical ">
+								<img src="{% static 'home/templates/homepage/images/c3.jpg' %}" alt=" " />
+								<div class="gal-text-box">
+									<div class="info-gal-con">
+										<h4>Honest Food</h4>
+										<span class="separator"></span>
+										<p>Sit accusamus, vel blanditiis iure minima ipsa.</p>
+										<span class="separator"></span>
+										
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3 baner-top ban-mar wow fadeInDown animated" data-wow-delay=".5s">
+						<a href="{% static 'home/templates/homepage/images/c4.jpg' %}" class="b-link-stripe b-animate-go  swipebox">
+							<div class="gal-spin-effect vertical ">
+								<img src="{% static 'home/templates/homepage/images/c4.jpg' %}" alt=" " />
+								<div class="gal-text-box">
+									<div class="info-gal-con">
+										<h4>Honest Food</h4>
+										<span class="separator"></span>
+										<p>Sit accusamus, vel blanditiis iure minima ipsa.</p>
+										<span class="separator"></span>
+										
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-6 baner-top wow fadeInRight animated" data-wow-delay=".5s">
+						<a href="{% static 'home/templates/homepage/images/g7.jpg' %}" class="b-link-stripe b-animate-go  swipebox">
+							<div class="gal-spin-effect vertical ">
+								<img src="{% static 'home/templates/homepage/images/g7.jpg' %}" alt=" " />
+								<div class="gal-text-box">
+									<div class="info-gal-con">
+										<h4>Honest Food</h4>
+										<span class="separator"></span>
+										<p>Sit accusamus, vel blanditiis iure minima ipsa molestias minus laborum velit, nulla nisi hic quasi enim.</p>
+										<span class="separator"></span>
+										
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-6 baner-top wow fadeInLeft animated" data-wow-delay=".5s">
+						<a href="{% static 'home/templates/homepage/images/g8.jpg' %}" class="b-link-stripe b-animate-go  swipebox">
+							<div class="gal-spin-effect vertical ">
+								<img src="{% static 'home/templates/homepage/images/g8.jpg' %}" alt=" " />
+								<div class="gal-text-box">
+									<div class="info-gal-con">
+										<h4>Honest Food</h4>
+										<span class="separator"></span>
+										<p>Sit accusamus, vel blanditiis iure minima ipsa molestias minus laborum velit, nulla nisi hic quasi enim.</p>
+										<span class="separator"></span>
+										
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+	</div>
+<!-- //gallery -->
+
+  <!--bottom-->
+	    <div class="bottom">
+		<div class="container">
+		       <div class="bottom-top">
+			    <h3 class=" wow flipInX"  data-wow-duration="1s" data-wow-delay=".3s">We Are Sharing</h3>
+				<span>DELICIOUS TREATS</span>
+				   <p class="wow slideInDown" data-wow-duration="1s" data-wow-delay=".5s">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since, Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+				   <div class="start wow flipInX"  data-wow-duration="1s" data-wow-delay=".3s">
+						     <a href="single.html" class="hvr-bounce-to-bottom">Read More</a>
+				   </div>
+			   </div>
+		</div>
+	</div>
+
+	 <!--/contact-->
+	 <div class="section-contact" id="contact">
+	    <div class="container">
+           <div class="contact-main">
+				    <div class="col-md-6 contact-grid wow fadeInUp"  data-wow-duration="1s" data-wow-delay=".3s">
+					<h3 class="tittle wow bounceIn"  data-wow-duration=".8s" data-wow-delay=".2s">Contact Us</h3>
+						<div class="arrows-three"><img src="{% static 'home/templates/homepage/images/border.png' %}" alt="border"></div>
+							<p class="wel-text wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".4s">Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus omnis optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+						    <form id="filldetails">
+					  <div class="field name-box">
+							<input type="text" id="name" placeholder="Who Are You?" required=""/>
+							<label for="name">Name</label>
+							<span class="ss-icon">check</span>
+					  </div>
+					  
+					  <div class="field email-box">
+							<input type="text" id="email" placeholder="example@email.com" required=""/>
+							<label for="email">Email</label>
+							<span class="ss-icon">check</span>
+					  </div>
+					  
+					  <div class="field phonenum-box">
+							<input type="text" id="email" placeholder="Phone Number" required=""/>
+							<label for="email">Phone</label>
+							<span class="ss-icon">check</span>
+					  </div>
+
+					  <div class="field msg-box">
+							<textarea id="msg" rows="4" placeholder="Your message goes here..." required=""/ ></textarea>
+							<label for="msg">Message</label>
+							<span class="ss-icon">check</span>
+					  </div>
+						<div class="send wow shake"  data-wow-duration="1s" data-wow-delay=".3s">
+											<input type="submit" value="Send" >
+										</div>
+					 
+			  </form>
+
+					   </div>
+					<div class="col-md-6 contact-in wow fadeInUp"  data-wow-duration="1s" data-wow-delay=".5s">
+						<h4 class="info">Our Info </h4>
+						<p class="para1">Lorem ipsum dolor sit amet. Ut enim ad minim veniam.Sunt in culpa qui officia deserunt mollit anim id est laborum.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature. </p>
+						<div class="con-top">
+							<h4>Alaska</h4>
+								<ul>
+								<li>4th Floor dolor sit amet,</li> 
+								<li># Grand Hyatt New York Road,</li>  
+								<li>Opp. adipiscing elit,</li> 
+								<li>Alaska - 99501</li> 
+								<li>Ph:4568956555 </li>
+								<li>Call Centre Time : 7am to 11pm</li>
+								<li><a href="mailto:info@example.com">mail@example.com</a></li>
+							  </ul>
+						</div>
+						<div class="con-top two">
+							<h4>Hawaii</h4>
+							<ul>
+								<li>4th Floor dolor sit amet,</li> 
+								<li># Grand Hyatt New York Road,</li>   
+								<li>Opp. adipiscing elit,</li> 
+								<li>Hawaii - 96815</li>
+								<li>Ph:3698521475 </li>
+								<li>Call Centre Time : 7am to 11pm</li>	
+								<li><a href="mailto:info@example.com">mail@example.com</a></li>
+							</ul>								
+						</div>
+					</div>
+					
+						<div class="clearfix"> </div>
+			      </div>
+				   <!--map-->
+				    <div class="map wow fadeInDown" data-wow-duration=".8s" data-wow-delay=".5s">
+					  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1675115.8258740564!2d-98.4671417929578!3d34.91371150021706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited+States!5e0!3m2!1sen!2sin!4v1434956093308"></iframe>
+					</div>
+				<!--//map-->
+			 </div>
+		</div>
+		<!--//contact-->
+<!--footer-->
+		<div class="footer text-center">
+						<div class="container">
+							<!--logo2-->
+								   <div class="logo2 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+									  <a href="index.html"><h2>H<span>onest Food</span></h2></a>
+									  <p>The Real taste</p>
+								   </div>
+					<!--//logo2-->
+								<a href="single.html" class="flag_tag2">Where to find us?</a>
+									<ul class="social wow slideInDown" data-wow-duration="1s" data-wow-delay=".3s">
+										<li><a href="#" class="tw"></a></li>
+										<li><a href="#" class="fb"> </a></li>
+										<li><a href="#" class="in"> </a></li>
+										<li><a href="#" class="dott"></a></li>
+										 <div class="clearfix"></div>
+									</ul>
+									<p class="copy-right wow fadeInUp"  data-wow-duration="1s" data-wow-delay=".3s">&copy; 2016 Honest Food. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+
+					 </div>
+	     </div>
+		<!--start-smooth-scrolling-->
+						<script type="text/javascript">
+									$(document).ready(function() {
+										/*
+										var defaults = {
+								  			containerID: 'toTop', // fading element id
+											containerHoverID: 'toTopHover', // fading element hover id
+											scrollSpeed: 1200,
+											easingType: 'linear' 
+								 		};
+										*/
+										
+										$().UItoTop({ easingType: 'easeOutQuart' });
+										
+									});
+								</script>
+								<!--end-smooth-scrolling-->
+		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+</body>
 </html>
