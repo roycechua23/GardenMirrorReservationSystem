@@ -72,12 +72,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                               <ul>
 								<li class="active"><a data-hover="Home" href="/">Home</a></li>
 								<li><a data-hover="About" href="#about" class="scroll">About</a></li>
-								<li><a data-hover="Services" href="#services" class="scroll">Services</a></li>
-								<li><a data-hover="Chefs" href="#team" class="scroll">Chefs</a></li>
-							    <li><a data-hover="Reservation" href="#reservation" class="scroll">REservation</a></li>
+								<li><a data-hover="Chefs" href="#team" class="scroll">Packages</a></li>
+							    <li><a data-hover="Reservation" href="#reservation" class="scroll">Reservation</a></li>
 							    <li><a data-hover="Gallery" href="#gallery" class="scroll">Gallery</a></li>
 								<li><a data-hover="Contact" href="#contact" class="scroll">Contact</a></li>
-
+								<li><a href="#" id="login">Login</a></li>
 								</ul>
 							</nav>
 							</div>
@@ -227,7 +226,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<img src="{% static 'home/templates/homepage/images/GardenMirror/64.jpg' %}" alt="img25"/>
 						<figcaption>
 							<h4>Garden <span>Mirror</span></h4>
-							<p>The perfect place for a birthday</p>
+							<p>The perfect place for a celebration</p>
 							
 						</figcaption>			
 					</figure>
@@ -260,34 +259,47 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="arrows-serve"><img src="{% static 'home/templates/homepage/images/border.png' %}" alt="border"></div>
 			<p align="left">Click on the icons for more info</p>	
 				<div class="inst-grids">
-					<div class="col-md-3 services-gd text-center wow slideInLeft"  data-wow-duration="1s" data-wow-delay=".3s">
+					{% comment %} <div class="col-md-3 services-gd text-center wow slideInLeft"  data-wow-duration="1s" data-wow-delay=".3s">
 						<div class="hi-icon-wrap hi-icon-effect-9 hi-icon-effect-9a">
 							<a href="#" class="hi-icon"><img src="{% static 'home/templates/homepage/images/serve1.png' %}" alt=" " /></a>
 						</div>
 						<h4>View our Menu</h4>
 						 <p>The Garden Mirror provides its own catering services that offers a rich selection of foods for your events.</p>
+					</div> {% endcomment %}
+					<div class="col-md-3 services-gd text-center wow slideInRight"  data-wow-duration="1s" data-wow-delay=".3s">
+							
 					</div>
-					<div class="col-md-3 services-gd text-center wow slideInDown"  data-wow-duration="1s" data-wow-delay=".2s">
+					<div class="col-md-3 services-gd text-center wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">
+							<div class="hi-icon-wrap hi-icon-effect-9 hi-icon-effect-9a">
+								<a href="#" class="hi-icon"><img src="{% static 'home/templates/homepage/images/serve1.png' %}" alt=" " /></a>
+							</div>
+							<h4>View our Menu</h4>
+							 <p>The Garden Mirror provides its own catering services that offers a rich selection of foods for your events.</p>
+					</div>
+					<div class="col-md-3 services-gd text-center wow slideInUp"  data-wow-duration="1s" data-wow-delay=".2s">
 						<div class="hi-icon-wrap hi-icon-effect-9 hi-icon-effect-9a">
 							<a href="#" class="hi-icon"><img src="{% static 'home/templates/homepage/images/serve2.png' %}" alt=" " /></a>
 						</div>
 						<h4>Reservation</h4>
 						 <p>The Garden Mirror allows customers to make reservation by personal appearance and through the <strong>online reservation system</strong>.</p>
 					</div>
-					<div class="col-md-3 services-gd text-center wow slideInUp"  data-wow-duration="1s" data-wow-delay=".2s">
+					{% comment %} <div class="col-md-3 services-gd text-center wow slideInUp"  data-wow-duration="1s" data-wow-delay=".2s">
 						<div class="hi-icon-wrap hi-icon-effect-9 hi-icon-effect-9a">
 							<a href="#" class="hi-icon"><img src="{% static 'home/templates/homepage/images/serve3.png' %}" alt=" " /></a>
 						</div>
 						<h4>Fine Recipes</h4>
 						 <p>Lorem ipsum Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit.</p>
-					</div>
+					</div> {% endcomment %}
 					<div class="col-md-3 services-gd text-center wow slideInRight"  data-wow-duration="1s" data-wow-delay=".3s">
+							
+					</div>
+					{% comment %} <div class="col-md-3 services-gd text-center wow slideInRight"  data-wow-duration="1s" data-wow-delay=".3s">
 						<div class="hi-icon-wrap hi-icon-effect-9 hi-icon-effect-9a">
 							<a href="#" class="hi-icon"><img src="{% static 'home/templates/homepage/images/serve4.png' %}" alt=" " /></a>
 						</div>
 						<h4>Spicy Recipes</h4>
 						 <p>Lorem ipsum Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit.</p>
-					</div>
+					</div> {% endcomment %}
 					<div class="clearfix"> </div>		
 				</div>
 
@@ -297,64 +309,67 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <!--start-services-->
 	<div class="team-section" id="team">
 	 	  <div class="container">
-		  <h3 class="tittle">Our Chefs</h3>
+		  <h3 class="tittle">Our Packages</h3>
 		  <div class="arrows-serve"><img src="{% static 'home/templates/homepage/images/border.png' %}" alt="border"></div>
 	 		<div class="box2">
 	 		   <div class="col-md-3 s-1 wow slideInLeft" data-wow-duration="1s" data-wow-delay=".3s">
 			   <a href="#">
 	 		   	<div class="view view-fifth">
-                    <img src="{% static 'home/templates/homepage/images/chef1.jpg' %}" alt="chef">
+                    <img src="{% static 'home/templates/homepage/images/GardenMirror/66.jpg' %}" alt="chef">
                     <div class="mask">
-                        <h4>Vivamus moles tie gravida turpis</h4>
-                        <p>A wonderful serenity has taken possession of my entire soul,  I enjoy with my whole heart.</p>
-                         <p class="p2">A wonderful serenity has taken possession of my entire soul, I enjoy with my whole heart.</p>
+                        <h4>Debut Packages</h4>
+                        <p>DEBUT PACKAGES<br>Set A : 5 MAIN COURSE with Dessert, Drinks and Rice
+						<br>Set B : 5 MAIN COURSE with Dessert, Drinks, Soup, Appetizer, and Rice</p>
+                         <p class="p2">Set A: 100 pax for Php 100,000<br>
+								Set B: 100 pax for Php 110,000</p>
                      </div>
                    
 				    </div>
 				  </a>
-			<h3>Wilson</h3>
+			<h3>DEBUT</h3>
 				</div>
 		<div class="col-md-3 s-2 wow slideInLeft" data-wow-duration="1s" data-wow-delay=".3s">
 		<a href="#">
 	 		   	<div class="view view-fifth">
-                      <img src="{% static 'home/templates/homepage/images/chef2.jpg' %}" alt="chef">
+                      <img src="{% static 'home/templates/homepage/images/GardenMirror/67.jpg' %}" alt="chef">
                        <div class="mask">
-                        <h4>Vivamus moles tie gravida turpis</h4>
-                        <p>A wonderful serenity has taken possession of my entire soul,  I enjoy with my whole heart.</p>
-                         <p class="p2">A wonderful serenity has taken possession of my entire soul, I enjoy with my whole heart.</p>
+                        <h4>Wedding Packages</h4>
+                        <p>Set A : 5 MAIN COURSE with Dessert, Drinks and Rice
+						   <br>Set B : 5 MAIN COURSE with Dessert, Drinks, Soup, Appetizer, Assorted Fresh Fruits, Salad Bar and Rice</p>
+                         <p class="p2">Set A: 100 pax for Php 100,000<br>Set B: 100 pax for Php 120,000</p>
                      </div>
                
 				    </div>
 				  </a>
-				<h3>Victoria</h3>
+				<h3>WEDDING</h3>
 				</div>
 			  <div class="col-md-3 s-3 wow slideInRight" data-wow-duration="1s" data-wow-delay=".3s">
 			  <a href="#">
 	 		   	<div class="view view-fifth">
-                     <img src="{% static 'home/templates/homepage/images/chef3.jpg' %}" alt="chef">
+                     <img src="{% static 'home/templates/homepage/images/GardenMirror/68.jpg' %}" alt="chef">
                     <div class="mask">
-                        <h4>Vivamus moles tie gravida turpis</h4>
-                        <p>A wonderful serenity has taken possession of my entire soul,  I enjoy with my whole heart.</p>
-                         <p class="p2">A wonderful serenity has taken possession of my entire soul, I enjoy with my whole heart.</p>
+                        <h4>Kiddy Party Packages</h4>
+                        <p>Kiddie party package Set A and set B: 4 Main Course</p>
+                         <p class="p2">Set A: 70 pax for Php 30,000<br>Set B: 100 pax for Php 40,000</p>
                      </div>
                   
 				    </div>
 				  </a>
-					<h3>Mr.jazz</h3>
+					<h3>KIDDIE PARTY</h3>
 				</div>
 				<div class="col-md-3 s-4 wow slideInRight" data-wow-duration="1s" data-wow-delay=".3s">
 				 <a href="#">
 	 		   	 <div class="view view-fifth">
-                      <img src="{% static 'home/templates/homepage/images/chef4.jpg' %}" alt="chef">
+                      <img src="{% static 'home/templates/homepage/images/GardenMirror/69.jpg' %}" alt="chef">
                     <div class="mask">
-                        <h4>Vivamus moles tie gravida turpis</h4>
-                        <p>A wonderful serenity has taken possession of my entire soul,  I enjoy with my whole heart.</p>
-                         <p class="p2">A wonderful serenity has taken possession of my entire soul, I enjoy with my whole heart.</p>
+                        <h4>Party Packages</h4>
+                        <p>Party package Set A and Set B: 4 Main Course</p>
+                         <p class="p2">Set A: 50 pax for Php 25,000<br>Set B: 100 pax for Php 40,000</p>
                      </div>
                    
 				    </div>
 				  </a>
-					<h3>Rosie Wilson</h3>
+					<h3>PARTY</h3>
 				</div>
 				<div class="clearfix"></div>
 		     </div>
@@ -391,23 +406,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						       <div id="owl-demo" class="owl-carousel">
 					                 <div class="item-owl">
 					                		<div class="test-review">
-											   <p class="wow fadeInUp"  data-wow-duration=".8s" data-wow-delay=".4s"><img src="{% static 'home/templates/homepage/images/left-quotes.png' %}" alt=""> Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. <img src="{% static 'home/templates/homepage/images/right-quotes.png' %}" alt=""></p>
-						                	  <img src="{% static 'home/templates/homepage/images/t3.jpg' %}" class="img-responsive" alt=""/>
-											  <h5 class="wow bounceIn"  data-wow-duration=".8s" data-wow-delay=".2s">Martin H. Joseph</h5>
+											   <p class="wow fadeInUp"  data-wow-duration=".8s" data-wow-delay=".4s"><img src="{% static 'home/templates/homepage/images/left-quotes.png' %}" alt="">I had my debut here. Excellent service! The venue and the food was excellent. <img src="{% static 'home/templates/homepage/images/right-quotes.png' %}" alt=""></p>
+						                	  <img src="{% static 'home/templates/homepage/images/GardenMirror/chaotestimonial.jpg' %}" class="img-responsive" alt=""/>
+											  <h5 class="wow bounceIn"  data-wow-duration=".8s" data-wow-delay=".2s">Angel Doria</h5>
 					                	    </div>
 					                </div>
 					                 <div class="item-owl">
 					                	<div class="test-review">
-										 <p class="wow fadeInUp"  data-wow-duration=".8s" data-wow-delay=".4s"> <img src="{% static 'home/templates/homepage/images/left-quotes.png' %}" alt="">Polite sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.<img src="{% static 'home/templates/homepage/images/right-quotes.png' %}" alt=""></p>
-						                	<img src="{% static 'home/templates/homepage/images/t2.jpg' %}" class="img-responsive" alt=""/>
-											 <h5 class="wow bounceIn"  data-wow-duration=".8s" data-wow-delay=".2s">Dennis Pal,</h5>
+										 <p class="wow fadeInUp"  data-wow-duration=".8s" data-wow-delay=".4s"> <img src="{% static 'home/templates/homepage/images/left-quotes.png' %}" alt="">In the few times I would go to Marikina, celebrating an event in their place is the best!<img src="{% static 'home/templates/homepage/images/right-quotes.png' %}" alt=""></p>
+						                	<img src="{% static 'home/templates/homepage/images/GardenMirror/roycetestimonial.jpg' %}" class="img-responsive" alt=""/>
+											 <h5 class="wow bounceIn"  data-wow-duration=".8s" data-wow-delay=".2s">Royce Chua</h5>
 					                	</div>
 					                </div>
 					                 <div class="item-owl">
 					                	<div class="test-review">
-										     <p class="wow fadeInUp"  data-wow-duration=".8s" data-wow-delay=".4s"><img src="{% static 'home/templates/homepage/images/left-quotes.png' %}" alt=""> Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. <img src="{% static 'home/templates/homepage/images/right-quotes.png' %}" alt=""></p>
-						                	 <img src="{% static 'home/templates/homepage/images/t1.jpg' %}" class="img-responsive" alt=""/>
-											 <h5 class="wow bounceIn"  data-wow-duration=".8s" data-wow-delay=".2s">Martin H.Wilson</h5>
+										     <p class="wow fadeInUp"  data-wow-duration=".8s" data-wow-delay=".4s"><img src="{% static 'home/templates/homepage/images/left-quotes.png' %}" alt="">Our family reunion took place here. Excellent food and facilities!<img src="{% static 'home/templates/homepage/images/right-quotes.png' %}" alt=""></p>
+						                	 <img src="{% static 'home/templates/homepage/images/GardenMirror/wendietestimonial.jpg' %}" class="img-responsive" alt=""/>
+											 <h5 class="wow bounceIn"  data-wow-duration=".8s" data-wow-delay=".2s">Wendie Melendrez</h5>
 					                	</div>
 					                </div>
 				              </div>
