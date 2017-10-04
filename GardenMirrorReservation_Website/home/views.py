@@ -16,7 +16,6 @@ from home.forms import Reservation, CateringPackage
 def index(request):
     user_form = UserForm()
     profile_form = UserProfileInfoForm()
-    u = User.objects.all()
 
     return render(request,"home/index.html",
                           context={'user_form':user_form,

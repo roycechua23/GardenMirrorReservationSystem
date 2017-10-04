@@ -474,7 +474,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div> -->
 						<div class="clearfix"> </div>
 						<div class="make wow shake" data-wow-duration="1s" data-wow-delay=".5s">
-						  <input id="#" type="submit" value="Sign up for an account">
+						  <input id="#" data-toggle="modal" data-target="#signupmodal" type="submit" value="Sign up for an account">
 						</div>
 					<!-- </form> -->
 
@@ -760,6 +760,41 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 		
 		{% comment %} Modals {% endcomment %}
+		<!-- SignUp Modal -->
+		<div class="modal fade" id="signupmodal" tabindex="-1" role="dialog" aria-labelledby="signuplabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+				  <div class="modal-content">
+					<div class="modal-header">
+					  <h5 class="modal-title" id="signuplabel">Signup Form</h5>
+					  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					  </button>
+					</div>
+					<div class="modal-body">
+					  <h2>Sign up here!</h2>
+					  {% if user_form %}
+					  <form name="signupform" action="{% url 'home:user_signup' %}" enctype="multipart/form-data" method="POST">
+						<div class="container-fluid">
+							{% csrf_token %}
+							{% bootstrap_form user_form %}
+							{% bootstrap_form profile_form %}
+							<input class="btn btn-primary form-control" type="submit" name="" value="Signup">
+						</div>
+					  </form>
+					  {% else %}
+					  <p>Sign up form is unable to load..</p>
+					  {% endif %}
+					</div>
+					<div class="modal-footer">
+					  <div align="center">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						{% comment %} <button type="button" class="btn btn-default">Signup</button> {% endcomment %}
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+		{% comment %} Login modals {% endcomment %}
 		<div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="loginlabel" aria-hidden="true">
 				<div class="modal-dialog" role="document">
 				  <div class="modal-content">
