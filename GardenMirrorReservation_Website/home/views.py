@@ -32,7 +32,7 @@ class UserProfileInfoViewSet(viewsets.ModelViewSet):
     queryset = UserProfileInfo.objects.all()
     serializer_class = UserProfileInfoSerializer
 
-@csrf_exempt
+
 @api_view(['POST'])
 def ionicregister(requests):
     pass
