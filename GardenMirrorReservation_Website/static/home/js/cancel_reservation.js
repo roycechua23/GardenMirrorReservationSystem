@@ -13,7 +13,7 @@ $(document).ready(function() {
                 type: 'POST',
                 dataType:'json',
                 success: function(data) {
-                    console.log("Event deleted!");
+                    console.log(data);
                 },
                 error: function(error) {
                     console.log("Something went wrong.");

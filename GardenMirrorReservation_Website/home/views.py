@@ -304,7 +304,7 @@ def cancel(request):
         data = {
             'event':event,
         }
-        return JsonResponse(data)    
+        return JsonResponse({"Message":"Successfullly deleted "+event})    
     else:
         return JsonResponse({"Message":"Unable to perform deletion."})
 
