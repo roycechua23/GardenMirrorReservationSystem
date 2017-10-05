@@ -26,6 +26,7 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register(r'users', hviews.UserViewSet)
 router.register(r'profileinfo', hviews.UserProfileInfoViewSet)
+router.register(r'ionicregister', hviews.ionicregister)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

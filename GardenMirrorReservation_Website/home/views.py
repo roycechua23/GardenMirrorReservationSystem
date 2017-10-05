@@ -31,6 +31,12 @@ class UserProfileInfoViewSet(viewsets.ModelViewSet):
     """
     queryset = UserProfileInfo.objects.all()
     serializer_class = UserProfileInfoSerializer
+
+@csrf_exempt
+@api_view(['POST'])
+def ionicregister(requests):
+    pass
+
 # Create your views here.
 # @csrf_exempt
 # @api_view(['GET','POST'])
@@ -280,6 +286,10 @@ def loadcancel_reservation(request):
     # updateform.fields['reserver'].queryset = UserProfileInfo.objects.filter(user__id=request.session['user_id'])
     # packages=CateringPackage.objects.all()
     return render(request,"home/cancel_reservation.html",{'user':userinfo,'userprofilepic':userprofileinfo,'reservers':reservers})
+
+@login_required
+def cancel(request):
+    pass
 
 @login_required
 def special(request):
