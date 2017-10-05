@@ -32,7 +32,8 @@ class UserProfileInfoViewSet(viewsets.ModelViewSet):
     queryset = UserProfileInfo.objects.all()
     serializer_class = UserProfileInfoSerializer
 # Create your views here.
-
+# @csrf_exempt
+# @api_view(['GET','POST'])
 def index(request):
     user_form = UserForm()
     profile_form = UserProfileInfoForm()
