@@ -6,7 +6,7 @@ $(document).ready(function() {
         if (event === "----------"){alert("Select an event to delete first")}
         else{
             $.ajax({
-                url: '/home/cancel',
+                url: 'home/cancel',
                 data: {
                     'event':event
                 },
