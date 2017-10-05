@@ -15,7 +15,9 @@ from home.forms import Reservation, CateringPackage
 # for rest framework
 from rest_framework import viewsets
 from home.serializers import *
-
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -32,7 +34,7 @@ class UserProfileInfoViewSet(viewsets.ModelViewSet):
     queryset = UserProfileInfo.objects.all()
     serializer_class = UserProfileInfoSerializer
 
-
+@csrf_exempt
 @api_view(['POST'])
 def ionicregister(requests):
     pass
