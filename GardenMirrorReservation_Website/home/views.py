@@ -11,6 +11,26 @@ from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponseRedirect,HttpResponse, JsonResponse
 from django.views.decorators.http import require_http_methods
 from home.forms import Reservation, CateringPackage
+
+# for rest framework
+from rest_framework import viewsets
+from home.serializers import *
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+
+
+class UserProfileInfoViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = UserProfileInfo.objects.all()
+    serializer_class = UserProfileInfoSerializer
 # Create your views here.
 
 def index(request):

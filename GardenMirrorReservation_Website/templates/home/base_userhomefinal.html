@@ -29,7 +29,15 @@
                     </h3>
                     <strong>GM</strong>
                 </div>
-
+                {% comment %} 
+                <li>
+                            {% if userprofilepic.profile_pic %}
+                                <img src="{{ MEDIA_URL }}{{ userprofilepic.profile_pic }}" width=200px style="border-radius:50%;">
+                            {% else %}
+                                <img src="{{ MEDIA_URL }}{{ 'profile_pics/noimage.png' }}" width=200px style="border-radius:50%;">
+                            {% endif %}   
+                </li>
+                {% endcomment %}
                 <ul class="list-unstyled components">
                     {% comment %} <li class="active"> {% endcomment %}
                     <li>
@@ -43,6 +51,7 @@
                             {% comment %} <li><a href="#"><i class="glyphicon glyphicon-off"></i>Logout</a></li> {% endcomment %}
                         </ul>
                     </li>
+                    
                     <li>
                         <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"> 
                             <i class="glyphicon glyphicon-th-list"></i>

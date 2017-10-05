@@ -20,12 +20,20 @@ from django.conf.urls.static import static
 from django.conf.urls import url,include # added include
 from django.contrib import admin
 from home import views as hviews # to remove after rtest is complete
+# django rest framework
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'users', hviews.UserViewSet)
+router.register(r'profileinfo', hviews.UserProfileInfoViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',hviews.index,name="index"),
     url(r'^home/',include('home.urls')),
     url(r'^special/',hviews.special,name="special"),
-    url(r'^rtest/',hviews.rtest,name="rtest")
+    url(r'^rtest/',hviews.rtest,name="rtest"),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
