@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
     $("#cancel").on("click", function() {
         console.log("Cancel clicked");
