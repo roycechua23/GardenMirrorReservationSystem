@@ -11,6 +11,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponseRedirect,HttpResponse, JsonResponse
 from django.views.decorators.http import require_http_methods
 from home.forms import Reservation, CateringPackage
+from django.views.decorators.csrf import csrf_exempts
 
 # for rest framework
 from rest_framework import viewsets
