@@ -37,9 +37,10 @@ class UserProfileInfoViewSet(viewsets.ModelViewSet):
     serializer_class = UserProfileInfoSerializer
 
 @csrf_exempt
-@api_view(['POST'])
+@api_view(['GET','POST'])
 def ionicregister(requests):
-    pass
+    if requests.method == "POST":
+        pass
 
 # Create your views here.
 # @csrf_exempt
