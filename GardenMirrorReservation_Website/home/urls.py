@@ -19,5 +19,6 @@ urlpatterns = [
     url(r'^update_reservation/$',views.loadupdate_reservation,name="update_reservation"),
     url(r'^reserve/$',views.reserve,name="reserve"),
     url(r'^update/$',views.update,name="update"),
-    url(r'^retrieveEvent/$',views.retrieveEvent,name="retrieveEvent")
+    url(r'^retrieveEvent/$',views.retrieveEvent,name="retrieveEvent"),
+    url(r'api/users/$',views.UserViewSet,name="users"),
 ]
