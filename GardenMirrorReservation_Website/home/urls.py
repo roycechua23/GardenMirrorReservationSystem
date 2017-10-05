@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^user_home/$',views.user_home,name="user_home"),
     url(r'^make_reservation/$',views.loadmake_reservation,name="make_reservation"),
     url(r'^update_reservation/$',views.loadupdate_reservation,name="update_reservation"),
+    url(r'^cancel_reservation/$',views.loadcancel_reservation,name="cancel_reservation"),
     url(r'^reserve/$',views.reserve,name="reserve"),
     url(r'^update/$',views.update,name="update"),
     url(r'^retrieveEvent/$',views.retrieveEvent,name="retrieveEvent"),

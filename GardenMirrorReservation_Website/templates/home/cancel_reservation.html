@@ -1,0 +1,28 @@
+{% extends "home/base_userhomefinal.html" %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+{% block body_block %}
+<div class="center jumbotron">
+    <h1>Reservation Form</h1>
+    <div class="form-group">
+        <label for="events">Your Events</label>
+        <select id="events" name="events" class="form-control">
+            <option id="0">----------</option>
+            {% for reserver in reservers %}
+            <option id="{{ reserver.pk }}">{{ reserver }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    
+    {% comment %} <form action="{% url 'home:update' %}" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+      
+        {% bootstrap_form updateform %}
+        
+        <div class="form-group">
+            <input class="form-control btn btn-primary" type="submit" value="Update">
+        </div>
+    </form> {% endcomment %}
+</div>
+{% endblock body_block %}

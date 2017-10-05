@@ -270,6 +270,18 @@ def update(request):
     return HttpResponseRedirect(reverse('home:update_reservation'))
 
 @login_required
+def loadcancel_reservation(request):
+    reservers = Reservation.objects.filter(reserver_id__user_id=request.session['user_id']).order_by('event_date')
+    userinfo = User.objects.get(id=request.session['user_id'])
+    userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
+    # updateform = UpdateForm()
+    # updateform.fields['package'].empty_label=None
+    # updateform.fields['reserver'].empty_label=None
+    # updateform.fields['reserver'].queryset = UserProfileInfo.objects.filter(user__id=request.session['user_id'])
+    # packages=CateringPackage.objects.all()
+    return render(request,"home/cancel_reservation.html",{'user':userinfo,'userprofilepic':userprofileinfo,'reservers':reservers})
+
+@login_required
 def special(request):
     return HttpResponse("You are logged in, Nice!")
 
