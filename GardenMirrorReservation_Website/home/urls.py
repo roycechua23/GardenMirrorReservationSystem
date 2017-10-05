@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^cancel_reservation/$',views.loadcancel_reservation,name="cancel_reservation"),
     url(r'^reserve/$',views.reserve,name="reserve"),
     url(r'^update/$',views.update,name="update"),
+    url(r'^cancel/',views.cancel,name="cancel"),
     url(r'^retrieveEvent/$',views.retrieveEvent,name="retrieveEvent"),
     # url(r'api/users/$',views.UserViewSet,name="users"),
 ]
