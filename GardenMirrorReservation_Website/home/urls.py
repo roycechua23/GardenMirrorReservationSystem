@@ -20,5 +20,5 @@ urlpatterns = [
     url(r'^reserve/$',views.reserve,name="reserve"),
     url(r'^update/$',views.update,name="update"),
     url(r'^retrieveEvent/$',views.retrieveEvent,name="retrieveEvent"),
-    url(r'api/users/$',views.UserViewSet.UserProfileInfoViewSet,name="users"),
+    url(r'api/users/$',views.UserViewSet,name="users"),
 ]
