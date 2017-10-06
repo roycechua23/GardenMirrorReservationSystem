@@ -340,7 +340,7 @@ def cancel(request):
     return JsonResponse({"message":"Successfullly deleted "+event,"events":event})    
 
 @login_required
-def profile(request):
+def userprofile(request):
    
     return render(request,"home/userprofile.html")
 
