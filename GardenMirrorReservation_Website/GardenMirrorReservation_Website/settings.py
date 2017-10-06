@@ -27,7 +27,7 @@ SECRET_KEY = '3)n872^stx#9#t4ag4z58psrnx7zch1#5q+&y*_n2otz1qqs^c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','royce236.pythonanywhere.com',]
+ALLOWED_HOSTS = ['api.sendgrid.com','royce236.pythonanywhere.com',]
 
 LOGIN_REDIRECT_URL = 'home/user_home' # if logged in, it will redirect to this URL
 LOGIN_URL = '/' # if not logged in, it will redirect to this URL
