@@ -4,35 +4,37 @@
 
 {% block body_block %}
 <div class="jumbotron">
-    <h1>Dashboard</h1>
-    <div></div>
-    <table class="table">
-        <thead>
-            <th>Event name</th>
-            <th>Package</th>
-            <th>Venue</th>
-            <th>Event Type</th>
-            <th>Event Date</th>
-            <th>Event Time Start</th>
-            <th>Event Time End</th>
-        </thead>
-        <tbody>
-            {% if reservations %}
-                {% for reservation in reservations %}
-                    <tr>
-                     <td>{{ reservation.name }}</td>
-                     <td>{{ reservation.package }}</td>
-                     <td>{{ reservation.venue }}</td>
-                     <td>{{ reservation.event_type }}</td>
-                     <td>{{ reservation.event_date }}</td>
-                     <td>{{ reservation.event_timestart }}</td>
-                     <td>{{ reservation.event_timeend }}</td>
-                    </tr>
-                {% endfor %}
-            {% else %}
-                <h1>No Reservations yet!</h1>
-            {% endif %}
-        </tbody>
-    </table>
+    <div class="container">
+            <h1>Dashboard</h1>
+            <div></div>
+            <table class="table">
+                <thead>
+                    <th>Event name</th>
+                    <th>Package</th>
+                    <th>Venue</th>
+                    <th>Event Type</th>
+                    <th>Event Date</th>
+                    <th>Event Time Start</th>
+                    <th>Event Time End</th>
+                </thead>
+                <tbody>
+                    {% if reservations %}
+                        {% for reservation in reservations %}
+                            <tr>
+                             <td>{{ reservation.name }}</td>
+                             <td>{{ reservation.package }}</td>
+                             <td>{{ reservation.venue }}</td>
+                             <td>{{ reservation.event_type }}</td>
+                             <td>{{ reservation.event_date }}</td>
+                             <td>{{ reservation.event_timestart }}</td>
+                             <td>{{ reservation.event_timeend }}</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <h1>No Reservations yet!</h1>
+                    {% endif %}
+                </tbody>
+            </table>
+    </div>
 </div>
 {% endblock %}
