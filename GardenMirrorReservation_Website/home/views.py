@@ -341,8 +341,10 @@ def cancel(request):
 
 @login_required
 def userprofile(request):
-   
-    return render(request,"home/userprofile.html")
+    userinfo = User.objects.get(id=request.session['user_id'])
+    userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
+    reservations = Reservation.objects.filter(reserver_id__user_id=request.session['user_id']).order_by('event_date')
+    return render(request,"home/userprofile.html",{'user':userinfo,'userprofilepic':userprofileinfo,'reservations':reservations})
 
 @login_required
 def special(request):
