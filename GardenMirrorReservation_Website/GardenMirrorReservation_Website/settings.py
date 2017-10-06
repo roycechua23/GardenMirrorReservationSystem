@@ -34,9 +34,9 @@ LOGIN_URL = '/' # if not logged in, it will redirect to this URL
 
 # Application definition
 EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'sendgrid_username'
-EMAIL_HOST_PASSWORD = 'sendgrid_password'
-EMAIL_PORT = 587
+EMAIL_HOST_USER = 'royce236'
+EMAIL_HOST_PASSWORD = 'Rbc_261523'
+EMAIL_PORT = 25587
 EMAIL_USE_TLS = True
 
 INSTALLED_APPS = [
