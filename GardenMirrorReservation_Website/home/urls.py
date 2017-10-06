@@ -23,6 +23,6 @@ urlpatterns = [
     url(r'^cancel/$',views.cancel,name="cancel"),
     url(r'^retrieveEvent/$',views.retrieveEvent,name="retrieveEvent"),
     url(r'^userprofile/$',views.userprofile,name="userprofile"),
-    url(r'^sendemasil/$',views.send_email, name="sendemail"),
+    url(r'^sendemail/$',views.send_email, name="sendemail"),
     # url(r'api/users/$',views.UserViewSet,name="users"),
 ]
