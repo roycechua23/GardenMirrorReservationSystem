@@ -648,7 +648,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="arrows-three"><img src="{% static 'home/templates/homepage/images/border.png' %}" alt="border"></div>
 							<p class="wel-text wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".4s">Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus omnis optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
 						    <form id="filldetails" action="home/sendemail/" method="POST">
-					  <div class="field name-box">
+							{% csrf_token %}
+						<div class="field name-box">
 							<input type="text" name="name" id="name" placeholder="Who Are You?" required=""/>
 							
 							
