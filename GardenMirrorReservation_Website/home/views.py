@@ -12,7 +12,6 @@ from django.http import HttpResponseRedirect,HttpResponse, JsonResponse
 from django.views.decorators.http import require_http_methods
 from home.forms import Reservation, CateringPackage
 
-
 # for rest framework
 from rest_framework import viewsets
 from home.serializers import *
@@ -20,6 +19,24 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
+
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse, HttpResponseRedirect
+
+def send_email(request):
+    subject = request.POST.get('name', '')+" "+"Inquiry"
+    message = request.POST.get('message', '') + " " + request.POST.get('contactno', '')
+    from_email = request.POST.get('email', '')
+    if subject and message and from_email:
+        try:
+            send_mail(subject, message, from_email, ['royce236@gmail.com'])
+        except BadHeaderError:
+            return HttpResponse('Invalid header found.')
+        return HttpResponseRedirect('/contact/thanks/')
+    else:
+        # In reality we'd use a form class
+        # to get proper validation errors.
+        return HttpResponse('Make sure all fields are entered and valid.')
 
 class UserViewSet(viewsets.ModelViewSet):
     """

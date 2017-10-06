@@ -647,28 +647,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h3 class="tittle wow bounceIn"  data-wow-duration=".8s" data-wow-delay=".2s">Contact Us</h3>
 						<div class="arrows-three"><img src="{% static 'home/templates/homepage/images/border.png' %}" alt="border"></div>
 							<p class="wel-text wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".4s">Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus omnis optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
-						    <form id="filldetails">
+						    <form id="filldetails" action="home/sendemail" method="POST">
 					  <div class="field name-box">
-							<input type="text" id="name" placeholder="Who Are You?" required=""/>
+							<input type="text" name="name" id="name" placeholder="Who Are You?" required=""/>
 							
 							
 							
 					  </div>
 					  
 					  <div class="field email-box">
-							<input type="text" id="email" placeholder="example@email.com" required=""/>
+							<input type="email" name="email" id="email" placeholder="example@email.com" required=""/>
 							<label for="email">Email</label>
 							<span class="ss-icon">check</span>
 					  </div>
 					  
 					  <div class="field phonenum-box">
-							<input type="text" id="email" placeholder="Phone Number" required=""/>
-							<label for="email">Phone</label>
+							<input type="text" name="contactno" id="contactno" placeholder="Phone Number" required=""/>
+							<label for="contactno">Phone</label>
 							<span class="ss-icon">check</span>
 					  </div>
 
 					  <div class="field msg-box">
-							<textarea id="msg" rows="4" placeholder="Your message goes here..." required=""/ ></textarea>
+							<textarea name="message" id="msg" rows="4" placeholder="Your message goes here..." required=""/ ></textarea>
 							<label for="msg">Message</label>
 							<span class="ss-icon">check</span>
 					  </div>
