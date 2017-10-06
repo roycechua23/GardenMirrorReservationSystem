@@ -11,10 +11,13 @@
         {% else %}
             <img src="{{ MEDIA_URL }}{{ 'profile_pics/noimage.png' }}" width=200px style="border-radius:50%;">
         {% endif %} 
-        <br>
+        <br><br>
         <h4>Name: {{ user.first_name }} {{ user.lastname }}</h4>
+        <br><br>
         <h4>Username: {{ user.username }}</h4>
+        <br><br>
         <h4>Email: {{ user.email }}</h4>
+        <br><br>
         <h4>Contact: {{ userprofilepic.contact }}</h4>
       
     </div>
