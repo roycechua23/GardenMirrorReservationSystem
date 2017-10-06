@@ -344,7 +344,7 @@ def profile(request):
     userinfo = User.objects.get(id=request.session['user_id'])
     userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
 
-    return render(request,"home/profile.html",{'user':userinfo,'userprofilepic':userprofileinfo,'reservations':reservations})
+    return render(request,"home/profile.html",{'user':userinfo,'userprofilepic':userprofileinfo})
 
 @login_required
 def special(request):
