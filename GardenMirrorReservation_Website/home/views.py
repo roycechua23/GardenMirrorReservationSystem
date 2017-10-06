@@ -296,16 +296,17 @@ def cancel(request):
     print("Reached!")
     event = request.GET.get('event', None)
     events = Reservation.objects.all()
+    updatedevents=[]
     for e in events:
         if str(e)==event:
             e.delete()
         else:
-            pass
+            updatedevents.append(e)
     data = {
+        'events':updatedevents,
         'event':event,
     }
-    return JsonResponse({"message":"Successfullly deleted "+event})    
-    
+    return JsonResponse({"message":"Successfullly deleted "+event,"events":event})    
 
 @login_required
 def special(request):
