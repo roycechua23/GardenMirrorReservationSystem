@@ -16,6 +16,7 @@ $(document).ready(function() {
                 success: function(data) {
                     console.log(data.message);
                     $('#deletesuccess').toggle().fadeIn(300);
+                    $('#events').val().remove();
                 },
                 error: function(error) {
                     console.log("Something went wrong.");
