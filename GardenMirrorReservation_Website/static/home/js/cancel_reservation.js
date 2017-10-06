@@ -16,7 +16,9 @@ $(document).ready(function() {
                 success: function(data) {
                     console.log(data.message);
                     $('#deletesuccess').toggle().fadeIn(300);
-                    $('#events').find(events).remove();
+                    $("#events option[value='"+event+"']").each(function() {
+                        $(this).remove();
+                    });
                 },
                 error: function(error) {
                     console.log("Something went wrong.");
