@@ -340,6 +340,13 @@ def cancel(request):
     return JsonResponse({"message":"Successfullly deleted "+event,"events":event})    
 
 @login_required
+def profile(request):
+    userinfo = User.objects.get(id=request.session['user_id'])
+    userprofileinfo = UserProfileInfo.objects.get(user_id=request.session['user_id'])
+
+    return render(request,"home/profile.html",{'user':userinfo,'userprofilepic':userprofileinfo,'reservations':reservations})
+
+@login_required
 def special(request):
     return HttpResponse("You are logged in, Nice!")
 
