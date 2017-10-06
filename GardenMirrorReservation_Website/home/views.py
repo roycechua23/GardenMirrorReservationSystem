@@ -272,7 +272,6 @@ def update(request):
         print(reservation.is_valid())
         if reservation.is_valid():
             reservation.save()
-            r = Reservation.objects.filter(name=request.POST.get('name')).order_by('currentdate')[0]
             eventtimestart = time.strftime(r.event_timestart,"%I:%M %p")
             eventtimeend = time.strftime(r.event_timeend,"%I:%M %p")
             # print(r.reserver)
