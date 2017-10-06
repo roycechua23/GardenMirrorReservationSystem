@@ -6,14 +6,14 @@ $(document).ready(function() {
         if (event === "----------"){alert("Select an event to delete first")}
         else{
             $.ajax({
-                url: '/home/cancel',
+                url: '/home/cancel/',
                 data: {
                     'event':event
                 },
-                type: 'POST',
+                // type: 'POST',
                 dataType:'json',
                 success: function(data) {
-                    console.log(data);
+                    console.log(data.message);
                 },
                 error: function(error) {
                     console.log("Something went wrong.");

@@ -294,20 +294,19 @@ def loadcancel_reservation(request):
 
 @login_required
 def cancel(request):
-    if request.method == "POST":
-        event = request.GET.get('event', None)
-        events = Reservation.objects.all()
-        for e in events:
-            if str(e)==event:
-                e.delete()
-            else:
-                pass
-        data = {
-            'event':event,
-        }
-        return JsonResponse({"Message":"Successfullly deleted "+event})    
-    else:
-        return JsonResponse({"Message":"Unable to perform deletion."})
+    print("Reached!")
+    event = request.GET.get('event', None)
+    events = Reservation.objects.all()
+    for e in events:
+        if str(e)==event:
+            e.delete()
+        else:
+            pass
+    data = {
+        'event':event,
+    }
+    return JsonResponse({"message":"Successfullly deleted "+event})    
+    
 
 @login_required
 def special(request):
