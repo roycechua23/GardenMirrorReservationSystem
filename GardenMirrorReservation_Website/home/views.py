@@ -272,6 +272,19 @@ def update(request):
         print(reservation.is_valid())
         if reservation.is_valid():
             reservation.save()
+            r = Reservation.objects.filter(name=request.POST.get('name')).order_by('currentdate')[0]
+            eventtimestart = time.strftime(r.event_timestart,"%I:%M %p")
+            eventtimeend = time.strftime(r.event_timeend,"%I:%M %p")
+            # print(r.reserver)
+            date_object = r.event_date
+            eventdate = date_object.strftime('%B %d, %Y')
+            u = User.objects.get(id=request.session['user_id'])
+            # reserverfullinfo = str(u.first_name)+" "+str(u.last_name)+" ("+r.reserver+") "
+            reserverfullinfo = r.reserver
+            msg = "{} updated a reservation\nContact Number: {}\nEvent name: {}\nEvent type: {}\nEvent date: {}\nStart time: {}\nEnd time: {}\nRemarks: {}\n--- end of message ---".format(reserverfullinfo,userprofileinfo.contact,r.name,r.event_type,eventdate,eventtimestart,eventtimeend,r.remarks)
+            # print(msg)
+            url = 'https://www.isms.com.my/isms_send.php?un=%s&pwd=%s&dstno=%d&msg=%s&type=1&sendid=GardenMirrorEventsPlace'%("royce236","261523",639060677392,msg)
+            txt = requests.get(url,proxies={"https":"http://proxy.server:3128"})
             print("Updated")
             return HttpResponseRedirect(reverse('home:user_home'))
     else:
