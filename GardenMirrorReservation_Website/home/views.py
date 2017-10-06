@@ -125,7 +125,7 @@ def register(request):
 
     # This is the render and context dictionary to feed
     # back to the body.html file page.
-    return render(request,'home/body.html',
+    return render(request,'home/index.html',
                           {'user_form':user_form,
                            'profile_form':profile_form,
                            'registered':registered})
