@@ -56,7 +56,7 @@ class UserProfileInfoViewSet(viewsets.ModelViewSet):
 @csrf_exempt
 @api_view(['GET','POST'])
 def ionicregister(requests):
-    return HttpResponse("Nc nc")
+    return HttpResponse(request.GET.get('firstname',''))
 
 # Create your views here.
 # @csrf_exempt
