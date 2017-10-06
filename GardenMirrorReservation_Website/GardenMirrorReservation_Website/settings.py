@@ -33,6 +33,7 @@ LOGIN_REDIRECT_URL = 'home/user_home' # if logged in, it will redirect to this U
 LOGIN_URL = '/' # if not logged in, it will redirect to this URL
 
 # Application definition
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'rbc'
 EMAIL_HOST_PASSWORD = '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'
