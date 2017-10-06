@@ -342,7 +342,7 @@ def cancel(request):
 @login_required
 def profile(request):
    
-    return render(request,"home/profile.html")
+    return render(request,"home/userprofile.html")
 
 @login_required
 def special(request):
